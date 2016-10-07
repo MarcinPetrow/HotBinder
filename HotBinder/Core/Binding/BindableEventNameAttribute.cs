@@ -20,6 +20,7 @@ namespace BinderPlayground.Core.Binding
     public enum BindableType
     {
         Data,
-        Action
+        Action,
+        Collection
     }
 }

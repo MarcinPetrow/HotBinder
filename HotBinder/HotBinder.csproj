@@ -72,6 +72,9 @@
     <Compile Include="Core\Controls\MCheckBox.cs">
       <SubType>BindableInfo</SubType>
     </Compile>
+    <Compile Include="Core\Controls\MListBox.cs">
+      <SubType>BindableInfo</SubType>
+    </Compile>
     <Compile Include="Core\Controls\MTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -83,6 +86,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AppHost.resx">
+      <DependentUpon>AppHost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\SampleView.resx">
       <DependentUpon>SampleView.cs</DependentUpon>
     </EmbeddedResource>

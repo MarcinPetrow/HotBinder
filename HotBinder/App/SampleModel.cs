@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using BinderPlayground.Core;
 using System.Windows.Forms;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace BinderPlayground.App
 {
@@ -14,6 +16,8 @@ namespace BinderPlayground.App
         private ICommand sampleAction;
         private ICommand newWindowAction;
         private ICommand duplicateWindowAction;
+        private ICommand addItemAction;
+        private BindingList<string> items;
 
         public string Name
         {
@@ -69,11 +73,37 @@ namespace BinderPlayground.App
             }
         }
 
+        public ICommand AddItemAction
+        {
+            get { return addItemAction; }
+            set
+            {
+                SetProperty(ref addItemAction, value);
+            }
+        }
+
+        public BindingList<string> Items {
+            get { return items; }
+            set
+            {
+                SetProperty(ref items, value);
+            }       
+        }
+
         public SampleModel()
         {
             SampleAction = new RelayCommands(SampleActionExecute);
             NewWindowAction = new RelayCommands(NewWindowActionExecute);
             DuplicateWindowAction = new RelayCommands(DuplicateWindowActionExecute);
+            AddItemAction = new RelayCommands(AddItemActionExecute);
+
+            
+            Items = new BindingList<string>();
+        }
+
+        private void AddItemActionExecute(object obj)
+        {
+            Items.Add("Item");
         }
 
         private void DuplicateWindowActionExecute(object obj)

@@ -12,7 +12,7 @@ namespace BinderPlayground.Core.Binding
         public static void Bind(Model context, object target, BindableInfo binding)
         {
             binding.UiPropertyInfo = target.GetType().GetProperty(binding.UiPropertyName);
-            if (binding.UiPropertyInfo == null && binding.Type == BindableType.Data)
+            if (binding.UiPropertyInfo == null && (binding.Type == BindableType.Data || binding.Type == BindableType.Collection))
             {
                 throw new BindingException($"UI property {binding.UiPropertyName} not found");
             }
@@ -35,6 +35,15 @@ namespace BinderPlayground.Core.Binding
             if (binding.Type == BindableType.Action && binding.PropertyInfo.PropertyType != typeof(ICommand))
             {
                 throw new BindingException($"Cannot bind {binding.PropertyName} to the Action because of incompatible type. Property type is {binding.PropertyInfo.PropertyType}.");
+            }
+
+            if (binding.Type == BindableType.Collection)
+            {
+                if (!binding.PropertyInfo.PropertyType.GetInterfaces().Contains(typeof(IBindingList)))
+                {
+                    throw new BindingException($"Cannot bind {binding.PropertyName} to the Action because of incompatible type. Property type is {binding.PropertyInfo.PropertyType}.");
+                }
+                ApplyPropertyChangeEvent(context, target, binding);
             }
 
             ApplyEventRegister(context, target, binding);
@@ -81,6 +90,10 @@ namespace BinderPlayground.Core.Binding
 
         private static void ApplyEventRegister(Model context, object target, BindableInfo binding)
         {
+            if (binding.Type == BindableType.Collection)
+            {
+                return;
+            }
             var eventInfo = target.GetType().GetEvent(binding.UiEventName);
             if (eventInfo == null)
             {
@@ -91,8 +104,8 @@ namespace BinderPlayground.Core.Binding
             {
                 eventInfo.AddEventHandler(target, CreateDelegate(eventInfo.EventHandlerType, (obj, args) =>
                 {
-                        var value = binding.UiPropertyInfo.GetValue(target);
-                        binding.PropertyInfo.SetValue(context, value);
+                    var value = binding.UiPropertyInfo.GetValue(target);
+                    binding.PropertyInfo.SetValue(context, value);
                 }));
             }
             if (binding.Type == BindableType.Action)

@@ -41,6 +41,8 @@ namespace BinderPlayground.App
             this.mButton1 = new BinderPlayground.Core.Controls.MButton();
             this.mButton2 = new BinderPlayground.Core.Controls.MButton();
             this.mButton3 = new BinderPlayground.Core.Controls.MButton();
+            this.mListBox1 = new HotBinder.Core.Controls.MListBox();
+            this.mButton4 = new BinderPlayground.Core.Controls.MButton();
             this.SuspendLayout();
             // 
             // mTextBox4
@@ -181,8 +183,37 @@ namespace BinderPlayground.App
             this.mButton3.TextChecked = null;
             this.mButton3.UseVisualStyleBackColor = true;
             // 
+            // mListBox1
+            // 
+            this.mListBox1.BindDataSource = "Items";
+            this.mListBox1.BindEnabled = null;
+            this.mListBox1.BindVisible = null;
+            this.mListBox1.ClickAction = null;
+            this.mListBox1.Context = null;
+            this.mListBox1.FormattingEnabled = true;
+            this.mListBox1.Location = new System.Drawing.Point(256, 100);
+            this.mListBox1.Name = "mListBox1";
+            this.mListBox1.Size = new System.Drawing.Size(120, 95);
+            this.mListBox1.TabIndex = 21;
+            // 
+            // mButton4
+            // 
+            this.mButton4.BindEnabled = null;
+            this.mButton4.BindVisible = null;
+            this.mButton4.ClickAction = "AddItemAction";
+            this.mButton4.Context = null;
+            this.mButton4.Location = new System.Drawing.Point(256, 201);
+            this.mButton4.Name = "mButton4";
+            this.mButton4.Size = new System.Drawing.Size(120, 53);
+            this.mButton4.TabIndex = 22;
+            this.mButton4.Text = "Add item";
+            this.mButton4.TextChecked = null;
+            this.mButton4.UseVisualStyleBackColor = true;
+            // 
             // SampleView
             // 
+            this.Controls.Add(this.mButton4);
+            this.Controls.Add(this.mListBox1);
             this.Controls.Add(this.mButton3);
             this.Controls.Add(this.mButton2);
             this.Controls.Add(this.mButton1);
@@ -195,7 +226,7 @@ namespace BinderPlayground.App
             this.Controls.Add(this.mTextBox2);
             this.Controls.Add(this.mTextBox1);
             this.Name = "SampleView";
-            this.Size = new System.Drawing.Size(265, 301);
+            this.Size = new System.Drawing.Size(537, 355);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,5 +245,7 @@ namespace BinderPlayground.App
         private MButton mButton1;
         private MButton mButton2;
         private MButton mButton3;
+        private HotBinder.Core.Controls.MListBox mListBox1;
+        private MButton mButton4;
     }
 }
