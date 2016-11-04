@@ -4,46 +4,51 @@ using System.Runtime.CompilerServices;
 
 namespace BinderPlayground.Core
 {
-	public class Model : INotifyPropertyChanged
-	{
-		public void NotifyAllProperties()
-		{
-			foreach (var propertyInfo in GetType().GetProperties())
-			{
-				if (!propertyInfo.CanRead)
-				{
-					continue;
-				}
-				var propertyName = propertyInfo.Name;
-				OnPropertyChanged(propertyName);
-			}
-		}
+    public class Model : INotifyPropertyChanged
+    {
+        public bool Notifiable = true;
 
-		public void NotifyProperty(string propertyName)
-		{
-			OnPropertyChanged(propertyName);
-		}
+        public void NotifyAllProperties()
+        {
+            foreach (var propertyInfo in GetType().GetProperties())
+            {
+                if (!propertyInfo.CanRead)
+                {
+                    continue;
+                }
+                var propertyName = propertyInfo.Name;
+                OnPropertyChanged(propertyName);
+            }
+        }
 
-		#region Property changed
+        public void NotifyProperty(string propertyName)
+        {
+            if (Notifiable)
+            {
+                OnPropertyChanged(propertyName);
+            }
+        }
 
-		public event PropertyChangedEventHandler PropertyChanged;
+        #region Property changed
 
-		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-		protected void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
-		{
-			if (EqualityComparer<T>.Default.Equals(field, value))
-			{
-				return;
-			}
+        protected void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value))
+            {
+                return;
+            }
 
-			field = value;
-			NotifyProperty(propertyName);
-		}
+            field = value;
+            NotifyProperty(propertyName);
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

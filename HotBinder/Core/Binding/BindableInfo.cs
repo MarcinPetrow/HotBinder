@@ -10,6 +10,8 @@ namespace BinderPlayground.Core.Binding
         public string UiEventName;
         public PropertyInfo UiPropertyInfo;
         public string UiPropertyName;
+
+        public Model Context { get; internal set; }
         public BindableType Type { get; set; }
     }
 }
