@@ -7,7 +7,7 @@ namespace HotBinder.Core.Controls
 {
 	[DesignerCategory("BindableInfo")]
 	[ToolboxItem(true)]
-	public class MNumericUpDown : NumericUpDown, IBindable
+	public class MTrackBar : TrackBar, IBindable
 	{
 		[Category("Model binding")]
 		[BindableElement("Value", "ValueChanged")]
@@ -23,6 +23,5 @@ namespace HotBinder.Core.Controls
 
 
 		public Model Context { get; set; }
-
 	}
 }

@@ -45,7 +45,14 @@ namespace BinderPlayground.App
 			this.mButton4 = new BinderPlayground.Core.Controls.MButton();
 			this.mTextBox5 = new BinderPlayground.Core.Controls.MTextBox();
 			this.mNumericUpDown1 = new HotBinder.Core.Controls.MNumericUpDown();
+			this.mRadioButton1 = new HotBinder.Core.Controls.MRadioButton();
+			this.mRadioButton2 = new HotBinder.Core.Controls.MRadioButton();
+			this.mRadioButton3 = new HotBinder.Core.Controls.MRadioButton();
+			this.mTrackBar1 = new HotBinder.Core.Controls.MTrackBar();
+			this.mComboBox1 = new HotBinder.Core.Controls.MComboBox();
+			this.mComboBox2 = new HotBinder.Core.Controls.MComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.mNumericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.mTrackBar1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// mTextBox4
@@ -147,6 +154,7 @@ namespace BinderPlayground.App
 			// mButton1
 			// 
 			this.mButton1.BindEnabled = null;
+			this.mButton1.BindText = null;
 			this.mButton1.BindVisible = null;
 			this.mButton1.ClickAction = "SampleAction";
 			this.mButton1.Context = null;
@@ -155,12 +163,12 @@ namespace BinderPlayground.App
 			this.mButton1.Size = new System.Drawing.Size(135, 53);
 			this.mButton1.TabIndex = 18;
 			this.mButton1.Text = "Show message";
-			this.mButton1.TextChecked = null;
 			this.mButton1.UseVisualStyleBackColor = true;
 			// 
 			// mButton2
 			// 
 			this.mButton2.BindEnabled = null;
+			this.mButton2.BindText = null;
 			this.mButton2.BindVisible = null;
 			this.mButton2.ClickAction = "NewWindowAction";
 			this.mButton2.Context = null;
@@ -169,12 +177,12 @@ namespace BinderPlayground.App
 			this.mButton2.Size = new System.Drawing.Size(136, 53);
 			this.mButton2.TabIndex = 19;
 			this.mButton2.Text = "Duplicate window";
-			this.mButton2.TextChecked = null;
 			this.mButton2.UseVisualStyleBackColor = true;
 			// 
 			// mButton3
 			// 
 			this.mButton3.BindEnabled = null;
+			this.mButton3.BindText = null;
 			this.mButton3.BindVisible = null;
 			this.mButton3.ClickAction = "DuplicateWindowAction";
 			this.mButton3.Context = null;
@@ -183,7 +191,6 @@ namespace BinderPlayground.App
 			this.mButton3.Size = new System.Drawing.Size(136, 53);
 			this.mButton3.TabIndex = 20;
 			this.mButton3.Text = "Duplicate window (same model)";
-			this.mButton3.TextChecked = null;
 			this.mButton3.UseVisualStyleBackColor = true;
 			// 
 			// mListBox1
@@ -196,23 +203,23 @@ namespace BinderPlayground.App
 			this.mListBox1.ClickAction = null;
 			this.mListBox1.Context = null;
 			this.mListBox1.FormattingEnabled = true;
-			this.mListBox1.Location = new System.Drawing.Point(256, 100);
+			this.mListBox1.Location = new System.Drawing.Point(256, 157);
 			this.mListBox1.Name = "mListBox1";
-			this.mListBox1.Size = new System.Drawing.Size(278, 95);
+			this.mListBox1.Size = new System.Drawing.Size(278, 56);
 			this.mListBox1.TabIndex = 21;
 			// 
 			// mButton4
 			// 
 			this.mButton4.BindEnabled = null;
+			this.mButton4.BindText = null;
 			this.mButton4.BindVisible = null;
 			this.mButton4.ClickAction = "AddItemAction";
 			this.mButton4.Context = null;
-			this.mButton4.Location = new System.Drawing.Point(256, 201);
+			this.mButton4.Location = new System.Drawing.Point(256, 219);
 			this.mButton4.Name = "mButton4";
 			this.mButton4.Size = new System.Drawing.Size(120, 53);
 			this.mButton4.TabIndex = 22;
 			this.mButton4.Text = "Add item";
-			this.mButton4.TextChecked = null;
 			this.mButton4.UseVisualStyleBackColor = true;
 			// 
 			// mTextBox5
@@ -221,7 +228,7 @@ namespace BinderPlayground.App
 			this.mTextBox5.BindText = "SelectedItem";
 			this.mTextBox5.BindVisible = null;
 			this.mTextBox5.Context = null;
-			this.mTextBox5.Location = new System.Drawing.Point(256, 70);
+			this.mTextBox5.Location = new System.Drawing.Point(256, 130);
 			this.mTextBox5.Name = "mTextBox5";
 			this.mTextBox5.Size = new System.Drawing.Size(278, 20);
 			this.mTextBox5.TabIndex = 23;
@@ -232,13 +239,103 @@ namespace BinderPlayground.App
 			this.mNumericUpDown1.BindValue = "SelectedIndex";
 			this.mNumericUpDown1.BindVisible = null;
 			this.mNumericUpDown1.Context = null;
-			this.mNumericUpDown1.Location = new System.Drawing.Point(383, 201);
+			this.mNumericUpDown1.Location = new System.Drawing.Point(382, 219);
 			this.mNumericUpDown1.Name = "mNumericUpDown1";
 			this.mNumericUpDown1.Size = new System.Drawing.Size(120, 20);
 			this.mNumericUpDown1.TabIndex = 24;
 			// 
+			// mRadioButton1
+			// 
+			this.mRadioButton1.BindChecked = "OptionA";
+			this.mRadioButton1.BindEnabled = null;
+			this.mRadioButton1.BindVisible = null;
+			this.mRadioButton1.Context = null;
+			this.mRadioButton1.Location = new System.Drawing.Point(4, 160);
+			this.mRadioButton1.Name = "mRadioButton1";
+			this.mRadioButton1.Size = new System.Drawing.Size(104, 24);
+			this.mRadioButton1.TabIndex = 25;
+			this.mRadioButton1.TabStop = true;
+			this.mRadioButton1.Text = "OptionA";
+			this.mRadioButton1.UseVisualStyleBackColor = true;
+			// 
+			// mRadioButton2
+			// 
+			this.mRadioButton2.BindChecked = "OptionB";
+			this.mRadioButton2.BindEnabled = null;
+			this.mRadioButton2.BindVisible = null;
+			this.mRadioButton2.Context = null;
+			this.mRadioButton2.Location = new System.Drawing.Point(4, 191);
+			this.mRadioButton2.Name = "mRadioButton2";
+			this.mRadioButton2.Size = new System.Drawing.Size(104, 24);
+			this.mRadioButton2.TabIndex = 26;
+			this.mRadioButton2.TabStop = true;
+			this.mRadioButton2.Text = "OptionB";
+			this.mRadioButton2.UseVisualStyleBackColor = true;
+			// 
+			// mRadioButton3
+			// 
+			this.mRadioButton3.BindChecked = "OptionC";
+			this.mRadioButton3.BindEnabled = null;
+			this.mRadioButton3.BindVisible = null;
+			this.mRadioButton3.Context = null;
+			this.mRadioButton3.Location = new System.Drawing.Point(4, 219);
+			this.mRadioButton3.Name = "mRadioButton3";
+			this.mRadioButton3.Size = new System.Drawing.Size(104, 24);
+			this.mRadioButton3.TabIndex = 27;
+			this.mRadioButton3.TabStop = true;
+			this.mRadioButton3.Text = "OptionC";
+			this.mRadioButton3.UseVisualStyleBackColor = true;
+			// 
+			// mTrackBar1
+			// 
+			this.mTrackBar1.BindEnabled = null;
+			this.mTrackBar1.BindValue = "SelectedIndex";
+			this.mTrackBar1.BindVisible = null;
+			this.mTrackBar1.Context = null;
+			this.mTrackBar1.Location = new System.Drawing.Point(256, 79);
+			this.mTrackBar1.Name = "mTrackBar1";
+			this.mTrackBar1.Size = new System.Drawing.Size(278, 45);
+			this.mTrackBar1.TabIndex = 28;
+			// 
+			// mComboBox1
+			// 
+			this.mComboBox1.BindDataSource = "Items";
+			this.mComboBox1.BindEnabled = null;
+			this.mComboBox1.BindSelectedIndex = "SelectedIndex";
+			this.mComboBox1.BindSelectedItem = "SelectedItem";
+			this.mComboBox1.BindVisible = null;
+			this.mComboBox1.ClickAction = null;
+			this.mComboBox1.Context = null;
+			this.mComboBox1.FormattingEnabled = true;
+			this.mComboBox1.Location = new System.Drawing.Point(256, 52);
+			this.mComboBox1.Name = "mComboBox1";
+			this.mComboBox1.Size = new System.Drawing.Size(278, 21);
+			this.mComboBox1.TabIndex = 29;
+			// 
+			// mComboBox2
+			// 
+			this.mComboBox2.BindDataSource = "Items";
+			this.mComboBox2.BindEnabled = null;
+			this.mComboBox2.BindSelectedIndex = "SelectedIndex";
+			this.mComboBox2.BindSelectedItem = "SelectedItem";
+			this.mComboBox2.BindVisible = null;
+			this.mComboBox2.ClickAction = null;
+			this.mComboBox2.Context = null;
+			this.mComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.mComboBox2.FormattingEnabled = true;
+			this.mComboBox2.Location = new System.Drawing.Point(256, 3);
+			this.mComboBox2.Name = "mComboBox2";
+			this.mComboBox2.Size = new System.Drawing.Size(278, 21);
+			this.mComboBox2.TabIndex = 30;
+			// 
 			// SampleView
 			// 
+			this.Controls.Add(this.mComboBox2);
+			this.Controls.Add(this.mComboBox1);
+			this.Controls.Add(this.mTrackBar1);
+			this.Controls.Add(this.mRadioButton3);
+			this.Controls.Add(this.mRadioButton2);
+			this.Controls.Add(this.mRadioButton1);
 			this.Controls.Add(this.mNumericUpDown1);
 			this.Controls.Add(this.mTextBox5);
 			this.Controls.Add(this.mButton4);
@@ -257,6 +354,7 @@ namespace BinderPlayground.App
 			this.Name = "SampleView";
 			this.Size = new System.Drawing.Size(537, 355);
 			((System.ComponentModel.ISupportInitialize)(this.mNumericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.mTrackBar1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -279,5 +377,11 @@ namespace BinderPlayground.App
 		private MButton mButton4;
 		private MTextBox mTextBox5;
 		private HotBinder.Core.Controls.MNumericUpDown mNumericUpDown1;
+		private HotBinder.Core.Controls.MRadioButton mRadioButton1;
+		private HotBinder.Core.Controls.MRadioButton mRadioButton2;
+		private HotBinder.Core.Controls.MRadioButton mRadioButton3;
+		private HotBinder.Core.Controls.MTrackBar mTrackBar1;
+		private HotBinder.Core.Controls.MComboBox mComboBox1;
+		private HotBinder.Core.Controls.MComboBox mComboBox2;
 	}
 }

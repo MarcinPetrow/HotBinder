@@ -72,16 +72,26 @@
     <Compile Include="Core\Controls\MCheckBox.cs">
       <SubType>BindableInfo</SubType>
     </Compile>
+    <Compile Include="Core\Controls\MComboBox.cs">
+      <SubType>BindableInfo</SubType>
+    </Compile>
     <Compile Include="Core\Controls\MListBox.cs">
       <SubType>BindableInfo</SubType>
     </Compile>
     <Compile Include="Core\Controls\MNumericUpDown.cs">
-      <SubType>Component</SubType>
+      <SubType>BindableInfo</SubType>
+    </Compile>
+    <Compile Include="Core\Controls\MRadioButton.cs">
+      <SubType>BindableInfo</SubType>
     </Compile>
     <Compile Include="Core\Controls\MTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Core\Controls\MTrackBar.cs">
+      <SubType>BindableInfo</SubType>
+    </Compile>
     <Compile Include="Core\IContextable.cs" />
+    <Compile Include="Core\Managers\PinManager.cs" />
     <Compile Include="Core\Model.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Core\View.cs">

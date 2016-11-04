@@ -7,11 +7,11 @@ namespace HotBinder.Core.Controls
 {
 	[DesignerCategory("BindableInfo")]
 	[ToolboxItem(true)]
-	public class MNumericUpDown : NumericUpDown, IBindable
+	public class MRadioButton : RadioButton, IBindable
 	{
 		[Category("Model binding")]
-		[BindableElement("Value", "ValueChanged")]
-		public string BindValue { get; set; }
+		[BindableElement("Checked", "CheckedChanged")]
+		public string BindChecked { get; set; }
 
 		[Category("Model binding")]
 		[BindableElement("Enabled", "EnabledChanged")]
@@ -20,7 +20,6 @@ namespace HotBinder.Core.Controls
 		[Category("Model binding")]
 		[BindableElement("Visible", "VisibleChanged")]
 		public string BindVisible { get; set; }
-
 
 		public Model Context { get; set; }
 

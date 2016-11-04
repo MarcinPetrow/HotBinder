@@ -1,16 +1,25 @@
-﻿using BinderPlayground.Core.Binding;
+﻿using BinderPlayground.Core;
+using BinderPlayground.Core.Binding;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BinderPlayground.Core.Controls
+namespace HotBinder.Core.Controls
 {
 	[DesignerCategory("BindableInfo")]
 	[ToolboxItem(true)]
-	public class MButton : Button, IBindable
+	public class MComboBox : ComboBox, IBindable
 	{
 		[Category("Model binding")]
-		[BindableElement("Text", "TextChanged")]
-		public string BindText { get; set; }
+		[BindableElement("DataSource", "DataSourceChanged", BindableType.Collection)]
+		public string BindDataSource { get; set; }
+
+		[Category("Model binding")]
+		[BindableElement("SelectedIndex", "SelectedIndexChanged")]
+		public string BindSelectedIndex { get; set; }
+
+		[Category("Model binding")]
+		[BindableElement("SelectedItem", "SelectedIndexChanged")]
+		public string BindSelectedItem { get; set; }
 
 		[Category("Model binding")]
 		[BindableElement("Enabled", "EnabledChanged")]

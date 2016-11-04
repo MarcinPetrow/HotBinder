@@ -1,3 +1,4 @@
+using HotBinder.Core.Managers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -106,78 +107,93 @@ namespace BinderPlayground.Core.Binding
 			{
 				return;
 			}
+
 			var eventInfo = target.GetType().GetEvent(binding.UiEventName);
 			if (eventInfo == null)
 			{
 				throw new BindingException($"Event {binding.UiEventName} not found");
 			}
 
+			Delegate eventDelegate = null;
+
 			if (binding.Type == BindableType.Data)
 			{
 				if (binding.PropertyInfo.PropertyType != binding.UiPropertyInfo.PropertyType)
 				{
-					eventInfo.AddEventHandler(target, CreateDelegate(eventInfo.EventHandlerType, (obj, args) =>
+					eventDelegate = CreateDelegate(eventInfo.EventHandlerType, (obj, args) =>
 					{
 						var value = binding.UiPropertyInfo.GetValue(target);
 
 						var castedValue = Convert.ChangeType((IConvertible)value, binding.PropertyInfo.PropertyType);
 
 						binding.PropertyInfo.SetValue(binding.Context, castedValue);
-					}));
+					});
 				}
 				else
 				{
-					eventInfo.AddEventHandler(target, CreateDelegate(eventInfo.EventHandlerType, (obj, args) =>
+					eventDelegate = CreateDelegate(eventInfo.EventHandlerType, (obj, args) =>
 					{
 						var value = binding.UiPropertyInfo.GetValue(target);
 						binding.PropertyInfo.SetValue(binding.Context, value);
-					}));
+					});
 				}
 
 			}
 			if (binding.Type == BindableType.Action)
 			{
-				eventInfo.AddEventHandler(target, CreateDelegate(eventInfo.EventHandlerType, (obj, args) =>
+				eventDelegate = CreateDelegate(eventInfo.EventHandlerType, (obj, args) =>
 				{
 					var value = binding.PropertyInfo.GetValue(binding.Context) as ICommand;
 					if (value != null && value.CanExecute(args))
 					{
 						value.Execute(args);
 					}
-				}));
+				});
 			}
+
+			if (eventDelegate != null)
+			{
+				eventInfo.AddEventHandler(target, eventDelegate);
+				PinManager.Instance.RegisterEvent(eventDelegate);
+			}
+
 
 		}
 
 		private static void ApplyConvertablePropertyChangeEvent(object target, BindableInfo binding)
 		{
-			binding.Context.PropertyChanged += delegate (object sender, PropertyChangedEventArgs args)
-			{
-				if (args.PropertyName != binding.PropertyName || sender == target)
+			PropertyChangedEventHandler propertyChangedEventHanlder = new PropertyChangedEventHandler(
+				(sender, args) =>
 				{
-					return;
-				}
-				var value = binding.PropertyInfo.GetValue(binding.Context);
+					if (args.PropertyName != binding.PropertyName || sender == target)
+					{
+						return;
+					}
+					var value = binding.PropertyInfo.GetValue(binding.Context);
 
-				//dynamical casting
-				if (binding.PropertyInfo.PropertyType != binding.UiPropertyInfo.PropertyType)
-				{
-					var castedValue = Convert.ChangeType((IConvertible)value, binding.UiPropertyInfo.PropertyType);
-					binding.UiPropertyInfo.SetValue(target, castedValue);
+					//dynamical casting
+					if (binding.PropertyInfo.PropertyType != binding.UiPropertyInfo.PropertyType)
+					{
+						var castedValue = Convert.ChangeType((IConvertible)value, binding.UiPropertyInfo.PropertyType);
+						binding.UiPropertyInfo.SetValue(target, castedValue);
+					}
+					//end of dynamical casting
+					else
+					{
+						binding.UiPropertyInfo.SetValue(target, value);
+					}
 				}
-				//end of dynamical casting
-				else
-				{
-					binding.UiPropertyInfo.SetValue(target, value);
-				}
-			};
+			);
+			binding.Context.PropertyChanged += propertyChangedEventHanlder;
+			PinManager.Instance.RegisteredPropertyChangedHandler(propertyChangedEventHanlder);
 
 			binding.Context.NotifyProperty(binding.PropertyName);
 		}
 
 		private static void ApplyPropertyChangeEvent(object target, BindableInfo binding)
 		{
-			binding.Context.PropertyChanged += delegate (object sender, PropertyChangedEventArgs args)
+			PropertyChangedEventHandler propertyChangedEventHanlder = new PropertyChangedEventHandler(
+				(sender, args) =>
 				{
 					if (args.PropertyName != binding.PropertyName || sender == target)
 					{
@@ -190,7 +206,10 @@ namespace BinderPlayground.Core.Binding
 						binding.UiPropertyInfo.SetValue(target, value);
 					}
 					catch { }
-				};
+				});
+
+			binding.Context.PropertyChanged += propertyChangedEventHanlder;
+			PinManager.Instance.RegisteredPropertyChangedHandler(propertyChangedEventHanlder);
 
 			binding.Context.NotifyProperty(binding.PropertyName);
 		}

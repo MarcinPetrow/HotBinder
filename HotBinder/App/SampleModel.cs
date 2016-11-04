@@ -109,6 +109,9 @@ namespace BinderPlayground.App
 	public class SampleModel : Model
 	{
 		private bool isChecked;
+		private bool optionA;
+		private bool optionB;
+		private bool optionC;
 		private bool isEnabled;
 		private string name;
 		private ICommand sampleAction;
@@ -134,6 +137,33 @@ namespace BinderPlayground.App
 			set
 			{
 				SetProperty(ref isChecked, value);
+			}
+		}
+
+		public bool OptionA
+		{
+			get { return optionA; }
+			set
+			{
+				SetProperty(ref optionA, value);
+			}
+		}
+
+		public bool OptionB
+		{
+			get { return optionB; }
+			set
+			{
+				SetProperty(ref optionB, value);
+			}
+		}
+
+		public bool OptionC
+		{
+			get { return optionC; }
+			set
+			{
+				SetProperty(ref optionC, value);
 			}
 		}
 
@@ -223,7 +253,7 @@ namespace BinderPlayground.App
 
 		private void AddItemActionExecute(object obj)
 		{
-			Items.Add(new DummyItem($"Item{DateTime.Now}"));
+			Items.Add(new DummyItem($"Item{Items.Count + 1}"));
 		}
 
 		private void DuplicateWindowActionExecute(object obj)
