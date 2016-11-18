@@ -11,7 +11,7 @@ namespace BinderPlayground.Core.Binding
         public PropertyInfo UiPropertyInfo;
         public string UiPropertyName;
 
-        public Model Context { get; internal set; }
+        public ViewModel Context { get; internal set; }
         public BindableType Type { get; set; }
     }
 }

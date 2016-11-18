@@ -4,6 +4,6 @@ namespace BinderPlayground.Core
 {
     public interface IContextable
     {
-        Model Context { get; set; }
+        ViewModel Context { get; set; }
     }
 }

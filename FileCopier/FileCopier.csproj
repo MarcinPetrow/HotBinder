@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{66E85FAA-06FB-4213-9D3F-F5A0CF150B7A}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{9CF33C8D-339C-4461-8B3E-7EC481CA396F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HotBinder</RootNamespace>
-    <AssemblyName>HotBinder</AssemblyName>
+    <RootNamespace>FileCopier</RootNamespace>
+    <AssemblyName>FileCopier</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,70 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppHost.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AppHost.Designer.cs">
-      <DependentUpon>AppHost.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Binding\BindableEventNameAttribute.cs" />
-    <Compile Include="Core\Binding\BindableInfo.cs" />
-    <Compile Include="Core\Binding\BindingException.cs" />
-    <Compile Include="Core\Binding\BindingHelper.cs" />
-    <Compile Include="Core\Binding\IBindable.cs" />
-    <Compile Include="Core\Controller.cs" />
-    <Compile Include="Core\Controls\Components\HStringListItem.cs" />
-    <Compile Include="Core\Controls\HButton.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HCheckBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HComboBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HDateTimePicker.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HLabel.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HListBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HNumericUpDown.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HProgressBar.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HRadioButton.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HTextBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HTrackBar.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HPictureBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\IContextable.cs" />
-    <Compile Include="Core\Managers\PinManager.cs" />
-    <Compile Include="Core\ViewModel.cs" />
-    <Compile Include="Core\RelayCommand.cs" />
-    <Compile Include="Core\View.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AppHost.resx">
-      <DependentUpon>AppHost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Controls\HTextBox.resx">
-      <DependentUpon>HTextBox.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Models\MainModel.cs" />
+    <Compile Include="Views\MainView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -122,6 +65,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,11 +81,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Resources\Logo.ico" />
-    <Content Include="Resources\Logo.png" />
-    <Content Include="Resources\Logo.svg" />
+    <ProjectReference Include="..\HotBinder\HotBinder.csproj">
+      <Project>{66E85FAA-06FB-4213-9D3F-F5A0CF150B7A}</Project>
+      <Name>HotBinder</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

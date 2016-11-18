@@ -12,13 +12,13 @@ namespace BinderPlayground.Core
             
         }
 
-        protected void InitializeView(Model model)
+        protected void InitializeView(ViewModel model)
         {
             ApplyDataContext(model);
             Binder();
         }
 
-        private void ApplyDataContext(Model model)
+        private void ApplyDataContext(ViewModel model)
         {
             foreach (var contextable in Controls.OfType<IContextable>())
             {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace BinderPlayground.Core.Binding
@@ -108,6 +109,11 @@ namespace BinderPlayground.Core.Binding
 				return;
 			}
 
+			if (string.IsNullOrEmpty(binding.UiEventName))
+			{
+				return;
+			}
+
 			var eventInfo = target.GetType().GetEvent(binding.UiEventName);
 			if (eventInfo == null)
 			{
@@ -180,7 +186,15 @@ namespace BinderPlayground.Core.Binding
 					//end of dynamical casting
 					else
 					{
-						binding.UiPropertyInfo.SetValue(target, value);
+						if (target is Control)
+						{
+							var control = target as Control;
+							control.BeginInvoke(((MethodInvoker)delegate
+							{
+								binding.UiPropertyInfo.SetValue(target, value);
+							}));
+						}
+
 					}
 				}
 			);
@@ -203,9 +217,27 @@ namespace BinderPlayground.Core.Binding
 
 					try
 					{
-						binding.UiPropertyInfo.SetValue(target, value);
+						if (target is Control)
+						{
+							var control = target as Control;
+							if (control.InvokeRequired)
+							{
+								control.BeginInvoke(((MethodInvoker)delegate
+								{
+									binding.UiPropertyInfo.SetValue(target, value);
+								}));
+							}
+							else
+							{
+								binding.UiPropertyInfo.SetValue(target, value);
+							}
+						}
+
 					}
-					catch { }
+					catch
+					{
+
+					}
 				});
 
 			binding.Context.PropertyChanged += propertyChangedEventHanlder;
