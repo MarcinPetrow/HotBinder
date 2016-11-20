@@ -1,8 +1,8 @@
-﻿using HotBinder;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using HotBinder;
 
-namespace HotBinderExamples
+namespace Playground
 {
 	static class Program
 	{

@@ -55,7 +55,9 @@
     <Compile Include="AppHost.Designer.cs">
       <DependentUpon>AppHost.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\Binding\BindableEventNameAttribute.cs" />
+    <Compile Include="Core\Abilities\Notificator.cs" />
+    <Compile Include="Core\Attributes\ActionAttribute.cs" />
+    <Compile Include="Core\Attributes\BindableEventNameAttribute.cs" />
     <Compile Include="Core\Binding\BindableInfo.cs" />
     <Compile Include="Core\Binding\BindingException.cs" />
     <Compile Include="Core\Binding\BindingHelper.cs" />
@@ -99,9 +101,10 @@
       <SubType>BindableInfo</SubType>
     </Compile>
     <Compile Include="Core\IContextable.cs" />
-    <Compile Include="Core\Managers\PinManager.cs" />
-    <Compile Include="Core\ViewModel.cs" />
-    <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Core\Keepers\ControllersKeeper.cs" />
+    <Compile Include="Core\Keepers\PinKeeper.cs" />
+    <Compile Include="Core\Model.cs" />
+    <Compile Include="Core\Binding\Commands\RelayCommand.cs" />
     <Compile Include="Core\View.cs">
       <SubType>UserControl</SubType>
     </Compile>

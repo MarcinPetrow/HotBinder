@@ -9,7 +9,7 @@ namespace HotBinder.Core.Managers
 
 		#region Singleton
 		private static volatile PinManager instance;
-		private static object syncRoot = new object();
+		private static readonly object SyncRoot = new object();
 
 		private PinManager()
 		{
@@ -23,7 +23,7 @@ namespace HotBinder.Core.Managers
 			{
 				if (instance == null)
 				{
-					lock (syncRoot)
+					lock (SyncRoot)
 					{
 						if (instance == null)
 						{

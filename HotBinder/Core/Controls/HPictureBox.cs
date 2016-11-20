@@ -1,7 +1,7 @@
-﻿using BinderPlayground.Core;
-using BinderPlayground.Core.Binding;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
+using HotBinder.Core.Attributes;
+using HotBinder.Core.Binding;
 
 namespace HotBinder.Core.Controls
 {
@@ -18,6 +18,6 @@ namespace HotBinder.Core.Controls
 		public string BindVisible { get; set; }
 
 
-		public ViewModel Context { get; set; }
+		public Controller Context { get; set; }
 	}
 }

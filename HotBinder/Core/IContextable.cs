@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace BinderPlayground.Core
+﻿namespace HotBinder.Core
 {
-    public interface IContextable
-    {
-        ViewModel Context { get; set; }
-    }
+	public interface IContextable
+	{
+		Controller Context { get; set; }
+	}
 }

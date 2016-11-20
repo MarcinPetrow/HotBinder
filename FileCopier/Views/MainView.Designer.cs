@@ -1,5 +1,4 @@
-﻿using BinderPlayground.Core.Controls;
-using HotBinder.Core.Controls;
+﻿using HotBinder.Core.Controls;
 
 namespace FileCopier.Views
 {
@@ -32,13 +31,13 @@ namespace FileCopier.Views
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
-			this.mTextBox1 = new BinderPlayground.Core.Controls.HTextBox();
-			this.mTextBox2 = new BinderPlayground.Core.Controls.HTextBox();
+			this.mTextBox1 = new HTextBox();
+			this.mTextBox2 = new HTextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.hButton1 = new BinderPlayground.Core.Controls.HButton();
-			this.hButton2 = new BinderPlayground.Core.Controls.HButton();
-			this.hButton3 = new BinderPlayground.Core.Controls.HButton();
+			this.hButton1 = new HButton();
+			this.hButton2 = new HButton();
+			this.hButton3 = new HButton();
 			this.hPictureBox1 = new HotBinder.Core.Controls.HPictureBox();
 			this.hPictureBox2 = new HotBinder.Core.Controls.HPictureBox();
 			this.hProgressBar1 = new HotBinder.Core.Controls.HProgressBar();

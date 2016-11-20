@@ -1,13 +1,13 @@
-﻿using BinderPlayground.Core;
+﻿using HotBinder.Core;
 
 namespace FileCopier.Views
 {
 	public partial class MainView : View
 	{
-		public MainView(ViewModel model)
+		public MainView(Controller controller)
 		{
 			InitializeComponent();
-			InitializeView(model);
+			InitializeView(controller);
 		}
 	}
 }

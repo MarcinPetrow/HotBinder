@@ -1,4 +1,6 @@
-﻿namespace HelloWorld.Views
+﻿using HotBinder.Core.Controls;
+
+namespace HelloWorld.Views
 {
 	partial class SimpleView
 	{
@@ -28,7 +30,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.hTextBox1 = new BinderPlayground.Core.Controls.HTextBox();
+			this.hTextBox1 = new HTextBox();
 			this.hLabel1 = new HotBinder.Core.Controls.HLabel();
 			this.hLabel2 = new HotBinder.Core.Controls.HLabel();
 			this.hLabel3 = new HotBinder.Core.Controls.HLabel();
@@ -100,7 +102,7 @@
 
 		#endregion
 
-		private BinderPlayground.Core.Controls.HTextBox hTextBox1;
+		private HTextBox hTextBox1;
 		private HotBinder.Core.Controls.HLabel hLabel1;
 		private HotBinder.Core.Controls.HLabel hLabel2;
 		private HotBinder.Core.Controls.HLabel hLabel3;

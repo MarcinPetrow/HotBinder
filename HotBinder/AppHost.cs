@@ -1,6 +1,6 @@
-﻿using BinderPlayground.Core;
+﻿using HotBinder.Core.Keepers;
 using System.Windows.Forms;
-using View = BinderPlayground.Core.View;
+using View = HotBinder.Core.View;
 
 namespace HotBinder
 {
@@ -8,27 +8,16 @@ namespace HotBinder
 	{
 		public string DefaultController { get; set; }
 
-		public AppHost()
-		{
-		}
-
 		public void Initialize()
 		{
 			InitializeComponent();
 
-			var controller = GetDefaultController();
+			var controller = ControllersKeeper.Instance.GetController(DefaultController);
 			controller.Host = this;
 
 			var indexMethod = controller.GetType().GetMethod("Index");
 
 			indexMethod.Invoke(controller, null);
-		}
-
-		public Controller GetDefaultController()
-		{
-			var defaultController = System.Reflection.Assembly.GetEntryAssembly().CreateInstance(DefaultController) as Controller;
-
-			return defaultController;
 		}
 
 		public void ApplyView(View view)

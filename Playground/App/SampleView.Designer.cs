@@ -1,6 +1,6 @@
-﻿using BinderPlayground.Core.Controls;
+﻿using HotBinder.Core.Controls;
 
-namespace BinderPlayground.App
+namespace Playground.App
 {
 	partial class SampleView
 	{
@@ -30,20 +30,20 @@ namespace BinderPlayground.App
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.mTextBox4 = new BinderPlayground.Core.Controls.HTextBox();
-			this.enabler = new BinderPlayground.Core.Controls.HCheckBox();
-			this.mCheckBox3 = new BinderPlayground.Core.Controls.HCheckBox();
-			this.mTextBox3 = new BinderPlayground.Core.Controls.HTextBox();
-			this.mCheckBox2 = new BinderPlayground.Core.Controls.HCheckBox();
-			this.mCheckBox1 = new BinderPlayground.Core.Controls.HCheckBox();
-			this.mTextBox2 = new BinderPlayground.Core.Controls.HTextBox();
-			this.mTextBox1 = new BinderPlayground.Core.Controls.HTextBox();
-			this.mButton1 = new BinderPlayground.Core.Controls.HButton();
-			this.mButton2 = new BinderPlayground.Core.Controls.HButton();
-			this.mButton3 = new BinderPlayground.Core.Controls.HButton();
+			this.mTextBox4 = new HTextBox();
+			this.enabler = new HCheckBox();
+			this.mCheckBox3 = new HCheckBox();
+			this.mTextBox3 = new HTextBox();
+			this.mCheckBox2 = new HCheckBox();
+			this.mCheckBox1 = new HCheckBox();
+			this.mTextBox2 = new HTextBox();
+			this.mTextBox1 = new HTextBox();
+			this.mButton1 = new HButton();
+			this.mButton2 = new HButton();
+			this.mButton3 = new HButton();
 			this.mListBox1 = new HotBinder.Core.Controls.HListBox();
-			this.mButton4 = new BinderPlayground.Core.Controls.HButton();
-			this.mTextBox5 = new BinderPlayground.Core.Controls.HTextBox();
+			this.mButton4 = new HButton();
+			this.mTextBox5 = new HTextBox();
 			this.mNumericUpDown1 = new HotBinder.Core.Controls.HNumericUpDown();
 			this.mRadioButton1 = new HotBinder.Core.Controls.HRadioButton();
 			this.mRadioButton2 = new HotBinder.Core.Controls.HRadioButton();

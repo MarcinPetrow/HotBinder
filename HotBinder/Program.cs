@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HotBinderExamples
+namespace HotBinder
 {
 	static class Program
 	{

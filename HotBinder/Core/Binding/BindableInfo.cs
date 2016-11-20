@@ -1,17 +1,17 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
+using HotBinder.Core.Attributes;
 
-namespace BinderPlayground.Core.Binding
+namespace HotBinder.Core.Binding
 {
-    public class BindableInfo
-    {
-        public PropertyInfo PropertyInfo;
-        public string PropertyName;
-        public string UiEventName;
-        public PropertyInfo UiPropertyInfo;
-        public string UiPropertyName;
+	public class BindableInfo
+	{
+		public PropertyInfo PropertyInfo;
+		public string PropertyName;
+		public string UiEventName;
+		public PropertyInfo UiPropertyInfo;
+		public string UiPropertyName;
 
-        public ViewModel Context { get; internal set; }
-        public BindableType Type { get; set; }
-    }
+		public Controller Context { get; internal set; }
+		public BindableType Type { get; set; }
+	}
 }

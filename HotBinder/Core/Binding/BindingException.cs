@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BinderPlayground.Core.Binding
+namespace HotBinder.Core.Binding
 {
     public class BindingException : Exception
     {

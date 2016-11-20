@@ -1,13 +1,13 @@
-﻿using BinderPlayground.Core;
+﻿using HotBinder.Core;
 
 namespace HelloWorld.Views
 {
 	public partial class SimpleView : View
 	{
-		public SimpleView(ViewModel viewModel)
+		public SimpleView(Controller controller)
 		{
 			InitializeComponent();
-			InitializeView(viewModel);
+			InitializeView(controller);
 		}
 	}
 }

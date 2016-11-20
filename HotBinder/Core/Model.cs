@@ -2,8 +2,8 @@
 
 namespace HotBinder.Core
 {
-	public class Controller : Notificator
+	public class Model : Notificator
 	{
-		public AppHost Host;
+
 	}
 }

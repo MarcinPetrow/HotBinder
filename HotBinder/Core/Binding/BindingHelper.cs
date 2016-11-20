@@ -1,4 +1,3 @@
-using HotBinder.Core.Managers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,8 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Input;
+using HotBinder.Core.Attributes;
+using HotBinder.Core.Managers;
 
-namespace BinderPlayground.Core.Binding
+namespace HotBinder.Core.Binding
 {
 	public static class BindingHelper
 	{

@@ -1,7 +1,7 @@
-﻿using BinderPlayground.Core;
-using BinderPlayground.Core.Binding;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
+using HotBinder.Core.Attributes;
+using HotBinder.Core.Binding;
 
 namespace HotBinder.Core.Controls
 {
@@ -33,13 +33,7 @@ namespace HotBinder.Core.Controls
 		[BindableElement("Click", "Click", BindableType.Action)]
 		public string ClickAction { get; set; }
 
-		public ViewModel Context { get; set; }
-
-		public HListBox()
-		{
-
-		}
-
+		public Controller Context { get; set; }
 	}
 }
 

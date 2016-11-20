@@ -1,9 +1,9 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
-using BinderPlayground.Core.Binding;
+using HotBinder.Core.Attributes;
+using HotBinder.Core.Binding;
 
-namespace BinderPlayground.Core.Controls
+namespace HotBinder.Core.Controls
 {
     [DesignerCategory("BindableInfo")]
     [ToolboxItem(true)]
@@ -21,6 +21,6 @@ namespace BinderPlayground.Core.Controls
         [BindableElement("Visible", "VisibleChanged")]
         public string BindVisible { get; set; }
 
-        public ViewModel Context { get; set; }
+        public Controller Context { get; set; }
     }
 }

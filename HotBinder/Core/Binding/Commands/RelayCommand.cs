@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace BinderPlayground.Core
+namespace HotBinder.Core.Binding.Commands
 {
 	public sealed class RelayCommands : ICommand, INotifyPropertyChanged
 	{

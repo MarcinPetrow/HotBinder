@@ -1,9 +1,8 @@
-using System;
 using System.Linq;
 using System.Windows.Forms;
-using BinderPlayground.Core.Binding;
+using HotBinder.Core.Binding;
 
-namespace BinderPlayground.Core
+namespace HotBinder.Core
 {
     public class View : UserControl
     {
@@ -12,19 +11,19 @@ namespace BinderPlayground.Core
             
         }
 
-        protected void InitializeView(ViewModel model)
+        protected void InitializeView(Controller controllerContext)
         {
-            ApplyDataContext(model);
+            ApplyDataContext(controllerContext);
             Binder();
         }
 
-        private void ApplyDataContext(ViewModel model)
+        private void ApplyDataContext(Controller controllerContext)
         {
             foreach (var contextable in Controls.OfType<IContextable>())
             {
-                contextable.Context = model;
+                contextable.Context = controllerContext;
             }
-            model.NotifyAllProperties();
+			controllerContext.NotifyAllProperties();
         }
 
         private void Binder()

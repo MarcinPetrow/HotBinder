@@ -1,14 +1,13 @@
-﻿using System;
-using BinderPlayground.Core;
+﻿using HotBinder.Core;
 
-namespace BinderPlayground.App
+namespace Playground.App
 {
-    public partial class SampleView : View
-    {
-        public SampleView(ViewModel model)
-        {
-            InitializeComponent();
-            InitializeView(model);
-        }
-    }
+	public partial class SampleView : View
+	{
+		public SampleView(Controller controller)
+		{
+			InitializeComponent();
+			InitializeView(controller);
+		}
+	}
 }

@@ -1,16 +1,10 @@
-﻿using BinderPlayground.Core;
+﻿using HotBinder.Core;
 
 namespace HelloWorld.Models
 {
-	public class SimpleModel : ViewModel
+	public class SimpleModel : Model
 	{
-		private string name;
 
-		public string Name
-		{
-			get { return name; }
-			set { SetProperty(ref name, value); }
-		}
 
 	}
 }

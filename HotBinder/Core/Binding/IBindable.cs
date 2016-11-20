@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BinderPlayground.Core.Binding
+﻿namespace HotBinder.Core.Binding
 {
     public interface IBindable : IContextable
     {}
