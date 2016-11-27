@@ -14,10 +14,7 @@ namespace FileCopier
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			var host = new AppHost()
-			{
-				DefaultController = "FileCopier.Controllers.MainController"
-			};
+			var host = new AppHost();
 			host.Initialize();
 
 			Application.Run(host);

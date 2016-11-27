@@ -1,8 +1,8 @@
-﻿using HotBinder;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using HotBinder;
 
-namespace HelloWorld
+namespace MixinExample
 {
 	static class Program
 	{
@@ -19,7 +19,5 @@ namespace HelloWorld
 
 			Application.Run(host);
 		}
-
-
 	}
 }

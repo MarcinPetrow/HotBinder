@@ -2,11 +2,11 @@
 
 namespace HotBinder.Core.Attributes
 {
-	public class ActionAttribute : Attribute
+	public class ControllerAttribute : Attribute
 	{
 		public bool IsDefault { get; set; }
 
-		public ActionAttribute(bool isDefault = false)
+		public ControllerAttribute(bool isDefault = false)
 		{
 			IsDefault = isDefault;
 		}

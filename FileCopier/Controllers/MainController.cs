@@ -1,15 +1,16 @@
 ﻿using FileCopier.Views;
+using HotBinder.Core;
 using HotBinder.Core.Attributes;
+using HotBinder.Core.Binding.Commands;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
-using HotBinder.Core;
-using HotBinder.Core.Binding.Commands;
 
 namespace FileCopier.Controllers
 {
+	[Controller(isDefault: true)]
 	public class MainController : Controller
 	{
 		private bool isSourceValid;
@@ -201,7 +202,7 @@ namespace FileCopier.Controllers
 
 		#region Actions
 
-		[Action]
+		[Action(true)]
 		public void Index()
 		{
 			var view = new MainView(this);

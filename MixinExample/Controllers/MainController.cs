@@ -1,10 +1,10 @@
-﻿using HelloWorld.Views;
-using HotBinder.Core;
+﻿using HotBinder.Core;
 using HotBinder.Core.Attributes;
+using MixinExample.Views;
 
-namespace HelloWorld.Controllers
+namespace MixinExample.Controllers
 {
-	[Controller(true)]
+	[Controller(IsDefault = true)]
 	public class MainController : Controller
 	{
 		private string name;
@@ -15,12 +15,18 @@ namespace HelloWorld.Controllers
 			set { SetProperty(ref name, value); }
 		}
 
-		[Action(true)]
+		[Action(IsDefault = true)]
 		public void Index()
 		{
-			var view = new SimpleView(this);
+			var view = new SimpleWPFView(this);
 
 			Host.ApplyView(view);
+		}
+
+		[Action]
+		public void Edition()
+		{
+
 		}
 	}
 }

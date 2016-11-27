@@ -30,20 +30,20 @@ namespace Playground.App
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.mTextBox4 = new HTextBox();
-			this.enabler = new HCheckBox();
-			this.mCheckBox3 = new HCheckBox();
-			this.mTextBox3 = new HTextBox();
-			this.mCheckBox2 = new HCheckBox();
-			this.mCheckBox1 = new HCheckBox();
-			this.mTextBox2 = new HTextBox();
-			this.mTextBox1 = new HTextBox();
-			this.mButton1 = new HButton();
-			this.mButton2 = new HButton();
-			this.mButton3 = new HButton();
+			this.mTextBox4 = new HotBinder.Core.Controls.HTextBox();
+			this.enabler = new HotBinder.Core.Controls.HCheckBox();
+			this.mCheckBox3 = new HotBinder.Core.Controls.HCheckBox();
+			this.mTextBox3 = new HotBinder.Core.Controls.HTextBox();
+			this.mCheckBox2 = new HotBinder.Core.Controls.HCheckBox();
+			this.mCheckBox1 = new HotBinder.Core.Controls.HCheckBox();
+			this.mTextBox2 = new HotBinder.Core.Controls.HTextBox();
+			this.mTextBox1 = new HotBinder.Core.Controls.HTextBox();
+			this.mButton1 = new HotBinder.Core.Controls.HButton();
+			this.mButton2 = new HotBinder.Core.Controls.HButton();
+			this.mButton3 = new HotBinder.Core.Controls.HButton();
 			this.mListBox1 = new HotBinder.Core.Controls.HListBox();
-			this.mButton4 = new HButton();
-			this.mTextBox5 = new HTextBox();
+			this.mButton4 = new HotBinder.Core.Controls.HButton();
+			this.mTextBox5 = new HotBinder.Core.Controls.HTextBox();
 			this.mNumericUpDown1 = new HotBinder.Core.Controls.HNumericUpDown();
 			this.mRadioButton1 = new HotBinder.Core.Controls.HRadioButton();
 			this.mRadioButton2 = new HotBinder.Core.Controls.HRadioButton();
@@ -54,6 +54,7 @@ namespace Playground.App
 			this.mDateTimePicker1 = new HotBinder.Core.Controls.HDateTimePicker();
 			this.pictureBox1 = new HotBinder.Core.Controls.HPictureBox();
 			this.hProgressBar1 = new HotBinder.Core.Controls.HProgressBar();
+			this.hButton1 = new HotBinder.Core.Controls.HButton();
 			((System.ComponentModel.ISupportInitialize)(this.mNumericUpDown1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.mTrackBar1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -371,8 +372,23 @@ namespace Playground.App
 			this.hProgressBar1.Size = new System.Drawing.Size(278, 23);
 			this.hProgressBar1.TabIndex = 33;
 			// 
+			// hButton1
+			// 
+			this.hButton1.BindEnabled = null;
+			this.hButton1.BindText = null;
+			this.hButton1.BindVisible = null;
+			this.hButton1.ClickAction = "PerformAction";
+			this.hButton1.Context = null;
+			this.hButton1.Location = new System.Drawing.Point(114, 278);
+			this.hButton1.Name = "hButton1";
+			this.hButton1.Size = new System.Drawing.Size(136, 53);
+			this.hButton1.TabIndex = 34;
+			this.hButton1.Text = "Perform controller action";
+			this.hButton1.UseVisualStyleBackColor = true;
+			// 
 			// SampleView
 			// 
+			this.Controls.Add(this.hButton1);
 			this.Controls.Add(this.hProgressBar1);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.mDateTimePicker1);
@@ -433,5 +449,6 @@ namespace Playground.App
 		private HotBinder.Core.Controls.HDateTimePicker mDateTimePicker1;
 		private HotBinder.Core.Controls.HPictureBox pictureBox1;
 		private HotBinder.Core.Controls.HProgressBar hProgressBar1;
+		private HButton hButton1;
 	}
 }

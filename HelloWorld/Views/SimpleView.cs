@@ -2,7 +2,7 @@
 
 namespace HelloWorld.Views
 {
-	public partial class SimpleView : View
+	public partial class SimpleView : WinFormsView
 	{
 		public SimpleView(Controller controller)
 		{

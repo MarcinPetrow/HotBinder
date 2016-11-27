@@ -2,7 +2,7 @@
 
 namespace Playground.App
 {
-	public partial class SampleView : View
+	public partial class SampleView : WinFormsView
 	{
 		public SampleView(Controller controller)
 		{

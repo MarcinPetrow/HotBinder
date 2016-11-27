@@ -1,6 +1,6 @@
-﻿using System;
+﻿using HotBinder;
+using System;
 using System.Windows.Forms;
-using HotBinder;
 
 namespace Playground
 {
@@ -14,11 +14,7 @@ namespace Playground
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-
-			var host = new AppHost()
-			{
-				DefaultController = "BinderPlayground.App.SampleController"
-			};
+			var host = new AppHost();
 			host.Initialize();
 
 			Application.Run(host);

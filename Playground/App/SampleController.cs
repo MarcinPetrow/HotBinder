@@ -1,14 +1,15 @@
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Windows.Input;
 using HotBinder.Core;
 using HotBinder.Core.Attributes;
 using HotBinder.Core.Binding.Commands;
 using HotBinder.Core.Controls.Components;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Playground.App
 {
+	[Controller(true)]
 	public class SampleController : Controller
 	{
 		private bool isChecked;
@@ -19,6 +20,7 @@ namespace Playground.App
 		private string name;
 		private ICommand sampleAction;
 		private ICommand newWindowAction;
+		private ICommand performAction;
 		private ICommand duplicateWindowAction;
 		private ICommand addItemAction;
 		private BindingList<HStringListItem> items;
@@ -98,6 +100,15 @@ namespace Playground.App
 			}
 		}
 
+		public ICommand PerformAction
+		{
+			get { return performAction; }
+			set
+			{
+				SetProperty(ref performAction, value);
+			}
+		}
+
 		public ICommand DuplicateWindowAction
 		{
 			get { return duplicateWindowAction; }
@@ -156,6 +167,7 @@ namespace Playground.App
 		{
 			SampleAction = new RelayCommands(SampleActionExecute);
 			NewWindowAction = new RelayCommands(NewWindowActionExecute);
+			PerformAction = new RelayCommands(PerformActionExecute);
 			DuplicateWindowAction = new RelayCommands(DuplicateWindowActionExecute);
 			AddItemAction = new RelayCommands(AddItemActionExecute);
 
@@ -191,7 +203,7 @@ namespace Playground.App
 			MessageBox.Show("Tada!");
 		}
 
-		[Action]
+		[Action(true)]
 		public void Index()
 		{
 			var view = new SampleView(this);
@@ -199,6 +211,19 @@ namespace Playground.App
 			Host.ApplyView(view);
 
 			Name = "Ex";
+		}
+
+		[Action]
+		public void Message()
+		{
+			MessageBox.Show("Message action!");
+
+			Redirect("SampleController", "Index");
+		}
+
+		private void PerformActionExecute(object obj)
+		{
+			Redirect("SampleController", "Message");
 		}
 	}
 }

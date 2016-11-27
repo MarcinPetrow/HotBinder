@@ -1,33 +1,45 @@
-﻿using HotBinder.Core.Keepers;
+﻿using HotBinder.Core;
+using HotBinder.Core.Keepers;
 using System.Windows.Forms;
-using View = HotBinder.Core.View;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace HotBinder
 {
 	public partial class AppHost : Form
 	{
-		public string DefaultController { get; set; }
-
 		public void Initialize()
 		{
 			InitializeComponent();
 
-			var controller = ControllersKeeper.Instance.GetController(DefaultController);
-			controller.Host = this;
-
-			var indexMethod = controller.GetType().GetMethod("Index");
-
-			indexMethod.Invoke(controller, null);
+			ControllersKeeper.Instance.Scan();
+			ControllersKeeper.Instance.PerformDefault(this);
 		}
 
-		public void ApplyView(View view)
+		public void ApplyView(IView view)
 		{
 			try
 			{
 				SuspendLayout();
 
 				ViewPanel.Controls.Clear();
-				ViewPanel.Controls.Add(view);
+				var winFormsView = view as Control;
+				if (winFormsView != null)
+				{
+					ViewPanel.Controls.Add(winFormsView);
+				}
+				else
+				{
+					var wpfView = view as UserControl;
+					if (wpfView != null)
+					{
+						var wpfHost = new System.Windows.Forms.Integration.ElementHost
+						{
+							Child = wpfView,
+							AutoSize = true
+						};
+						ViewPanel.Controls.Add(wpfHost);
+					}
+				}
 			}
 			finally
 			{

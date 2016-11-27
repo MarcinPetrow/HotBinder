@@ -2,7 +2,7 @@
 
 namespace FileCopier.Views
 {
-	public partial class MainView : View
+	public partial class MainView : WinFormsView
 	{
 		public MainView(Controller controller)
 		{
