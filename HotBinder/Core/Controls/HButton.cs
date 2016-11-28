@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.Windows.Forms;
-using HotBinder.Core.Attributes;
+﻿using HotBinder.Core.Attributes;
 using HotBinder.Core.Binding;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace HotBinder.Core.Controls
 {
@@ -25,10 +25,20 @@ namespace HotBinder.Core.Controls
 		[BindableElement("Click", "Click", BindableType.Action)]
 		public string ClickAction { get; set; }
 
+		[Category("Model binding")]
+		[BindableElement("Size", "SizeChanged")]
+		public string BindSize { get; set; }
+
+
 		public Controller Context { get; set; }
 
 		public HButton()
 		{
+			Control c = new Control();
+
+			//c.BackColorChanged
+			//c.Click
+			//c.SizeChanged
 
 		}
 	}

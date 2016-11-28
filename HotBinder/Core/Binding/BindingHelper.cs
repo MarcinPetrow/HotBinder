@@ -1,3 +1,5 @@
+using HotBinder.Core.Attributes;
+using HotBinder.Core.Keepers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -5,8 +7,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Input;
-using HotBinder.Core.Attributes;
-using HotBinder.Core.Managers;
 
 namespace HotBinder.Core.Binding
 {
@@ -28,7 +28,7 @@ namespace HotBinder.Core.Binding
 
 			if (binding.Type == BindableType.Data)
 			{
-				if (!binding.UiPropertyInfo.PropertyType.IsAssignableFrom(binding.PropertyInfo.PropertyType))
+				if (binding.UiPropertyInfo != null && !binding.UiPropertyInfo.PropertyType.IsAssignableFrom(binding.PropertyInfo.PropertyType))
 				{
 					if (binding.UiPropertyInfo.PropertyType != binding.PropertyInfo.PropertyType)
 					{
@@ -163,21 +163,19 @@ namespace HotBinder.Core.Binding
 				eventInfo.AddEventHandler(target, eventDelegate);
 				PinManager.Instance.RegisterEvent(eventDelegate);
 			}
-
-
 		}
 
 		private static void ApplyConvertablePropertyChangeEvent(object target, BindableInfo binding)
 		{
-			PropertyChangedEventHandler propertyChangedEventHanlder = new PropertyChangedEventHandler(
-				(sender, args) =>
+			PropertyChangedEventHandler propertyChangedEventHanlder = (sender, args) =>
+			{
+				if (args.PropertyName != binding.PropertyName || sender == target)
 				{
-					if (args.PropertyName != binding.PropertyName || sender == target)
-					{
-						return;
-					}
-					var value = binding.PropertyInfo.GetValue(binding.Context);
-
+					return;
+				}
+				var value = binding.PropertyInfo.GetValue(binding.Context);
+				try
+				{
 					//dynamical casting
 					if (binding.PropertyInfo.PropertyType != binding.UiPropertyInfo.PropertyType)
 					{
@@ -187,18 +185,15 @@ namespace HotBinder.Core.Binding
 					//end of dynamical casting
 					else
 					{
-						if (target is Control)
+						var control = target as Control;
+						control?.BeginInvoke((MethodInvoker)delegate
 						{
-							var control = target as Control;
-							control.BeginInvoke(((MethodInvoker)delegate
-							{
-								binding.UiPropertyInfo.SetValue(target, value);
-							}));
-						}
-
+							binding.UiPropertyInfo.SetValue(control, value);
+						});
 					}
 				}
-			);
+				catch { }
+			};
 			binding.Context.PropertyChanged += propertyChangedEventHanlder;
 			PinManager.Instance.RegisteredPropertyChangedHandler(propertyChangedEventHanlder);
 
@@ -207,39 +202,37 @@ namespace HotBinder.Core.Binding
 
 		private static void ApplyPropertyChangeEvent(object target, BindableInfo binding)
 		{
-			PropertyChangedEventHandler propertyChangedEventHanlder = new PropertyChangedEventHandler(
-				(sender, args) =>
+			PropertyChangedEventHandler propertyChangedEventHanlder = (sender, args) =>
+			{
+				if (args.PropertyName != binding.PropertyName || sender == target)
 				{
-					if (args.PropertyName != binding.PropertyName || sender == target)
-					{
-						return;
-					}
-					var value = binding.PropertyInfo.GetValue(binding.Context);
+					return;
+				}
+				var value = binding.PropertyInfo.GetValue(binding.Context);
 
-					try
+				try
+				{
+					var control = target as Control;
+					if (control != null)
 					{
-						if (target is Control)
+						if (control.InvokeRequired)
 						{
-							var control = target as Control;
-							if (control.InvokeRequired)
+							control.BeginInvoke((MethodInvoker)delegate
 							{
-								control.BeginInvoke(((MethodInvoker)delegate
-								{
-									binding.UiPropertyInfo.SetValue(target, value);
-								}));
-							}
-							else
-							{
-								binding.UiPropertyInfo.SetValue(target, value);
-							}
+								binding.UiPropertyInfo.SetValue(control, value);
+							});
 						}
-
+						else
+						{
+							binding.UiPropertyInfo.SetValue(control, value);
+						}
 					}
-					catch
-					{
+				}
+				catch
+				{
 
-					}
-				});
+				}
+			};
 
 			binding.Context.PropertyChanged += propertyChangedEventHanlder;
 			PinManager.Instance.RegisteredPropertyChangedHandler(propertyChangedEventHanlder);

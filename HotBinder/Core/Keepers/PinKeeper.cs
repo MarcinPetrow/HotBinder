@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace HotBinder.Core.Managers
+namespace HotBinder.Core.Keepers
 {
 	public sealed class PinManager
 	{

@@ -1,4 +1,4 @@
-﻿using HotBinder.Core.Attributes;
+﻿using HotBinder.Core.Layout;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,96 +7,6 @@ using System.Reflection;
 
 namespace HotBinder.Core.Keepers
 {
-	public class ActionEntry
-	{
-		public string Name { get; set; }
-		public bool Default { get; set; }
-		public MethodInfo Method { get; set; }
-
-		public ActionEntry(MethodInfo method, ActionAttribute controllerActionAttribute)
-		{
-			Method = method;
-			Name = method.Name;
-			Default = controllerActionAttribute?.IsDefault ?? false;
-		}
-
-		public void Execute(Controller scope)
-		{
-			Method?.Invoke(scope, null);
-		}
-	}
-
-	public class ControllerEntry
-	{
-		private Controller instance;
-		public string Name { get; set; }
-		public Type InstanceType { get; set; }
-
-		public Controller Instance
-		{
-			get
-			{
-				if (instance == null)
-				{
-					CreateInstance();
-				}
-				return instance;
-			}
-			set { instance = value; }
-		}
-
-		public bool Default { get; set; }
-
-		public List<ActionEntry> ActionEntries { get; set; }
-
-		public ControllerEntry(Type controllerType)
-		{
-			ActionEntries = new List<ActionEntry>();
-			InstanceType = controllerType;
-			Name = controllerType.Name;
-		}
-
-		public void GatherInformations()
-		{
-			var controllerAttributes = InstanceType.GetCustomAttributes(typeof(ControllerAttribute), true);
-			if (controllerAttributes.Length == 1)
-			{
-				var controllerAttribute = controllerAttributes[0] as ControllerAttribute;
-				if (controllerAttribute != null)
-				{
-					Default = controllerAttribute.IsDefault;
-				}
-			}
-
-			ActionEntries.Clear();
-
-			var controllersMethods = InstanceType.GetMethods();
-			foreach (var controllersMethod in controllersMethods)
-			{
-				var controllerActions = controllersMethod.GetCustomAttributes(typeof(ActionAttribute), true);
-				if (controllerActions.Length != 1)
-				{
-					continue;
-
-				}
-				var controllerActionAttribute = controllerActions[0] as ActionAttribute;
-				if (controllerActionAttribute == null)
-				{
-					continue;
-				}
-
-				var actionEntry = new ActionEntry(controllersMethod, controllerActionAttribute);
-				ActionEntries.Add(actionEntry);
-
-			}
-		}
-
-		public void CreateInstance()
-		{
-			Instance = Assembly.GetEntryAssembly().CreateInstance(InstanceType.FullName) as Controller;
-		}
-	}
-
 	public class ControllersKeeper
 	{
 		#region Singleton
@@ -167,6 +77,7 @@ namespace HotBinder.Core.Keepers
 
 		public ControllerEntry GetDefaultControllerEntry()
 		{
+
 			return controllersRegistry.FirstOrDefault(entry => entry.Value != null && entry.Value.Default).Value;
 		}
 
@@ -198,7 +109,7 @@ namespace HotBinder.Core.Keepers
 			defaultAction.Execute(controllerEntry.Instance);
 		}
 
-		public void PerformDefault(AppHost host)
+		public void PerformDefault(ILayoutView host)
 		{
 			var defaultController = GetDefaultControllerEntry();
 			defaultController.Instance.Host = host;

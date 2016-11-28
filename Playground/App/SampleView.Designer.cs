@@ -159,6 +159,7 @@ namespace Playground.App
 			// mButton1
 			// 
 			this.mButton1.BindEnabled = null;
+			this.mButton1.BindSize = null;
 			this.mButton1.BindText = null;
 			this.mButton1.BindVisible = null;
 			this.mButton1.ClickAction = "SampleAction";
@@ -173,6 +174,7 @@ namespace Playground.App
 			// mButton2
 			// 
 			this.mButton2.BindEnabled = null;
+			this.mButton2.BindSize = null;
 			this.mButton2.BindText = null;
 			this.mButton2.BindVisible = null;
 			this.mButton2.ClickAction = "NewWindowAction";
@@ -187,6 +189,7 @@ namespace Playground.App
 			// mButton3
 			// 
 			this.mButton3.BindEnabled = null;
+			this.mButton3.BindSize = null;
 			this.mButton3.BindText = null;
 			this.mButton3.BindVisible = null;
 			this.mButton3.ClickAction = "DuplicateWindowAction";
@@ -216,6 +219,7 @@ namespace Playground.App
 			// mButton4
 			// 
 			this.mButton4.BindEnabled = null;
+			this.mButton4.BindSize = null;
 			this.mButton4.BindText = null;
 			this.mButton4.BindVisible = null;
 			this.mButton4.ClickAction = "AddItemAction";
@@ -245,9 +249,19 @@ namespace Playground.App
 			this.mNumericUpDown1.BindVisible = null;
 			this.mNumericUpDown1.Context = null;
 			this.mNumericUpDown1.Location = new System.Drawing.Point(382, 219);
+			this.mNumericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			this.mNumericUpDown1.Name = "mNumericUpDown1";
 			this.mNumericUpDown1.Size = new System.Drawing.Size(120, 20);
 			this.mNumericUpDown1.TabIndex = 24;
+			this.mNumericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
 			// mRadioButton1
 			// 
@@ -375,6 +389,7 @@ namespace Playground.App
 			// hButton1
 			// 
 			this.hButton1.BindEnabled = null;
+			this.hButton1.BindSize = null;
 			this.hButton1.BindText = null;
 			this.hButton1.BindVisible = null;
 			this.hButton1.ClickAction = "PerformAction";
@@ -388,6 +403,8 @@ namespace Playground.App
 			// 
 			// SampleView
 			// 
+			this.AutoSize = true;
+			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.Controls.Add(this.hButton1);
 			this.Controls.Add(this.hProgressBar1);
 			this.Controls.Add(this.pictureBox1);
@@ -414,7 +431,7 @@ namespace Playground.App
 			this.Controls.Add(this.mTextBox2);
 			this.Controls.Add(this.mTextBox1);
 			this.Name = "SampleView";
-			this.Size = new System.Drawing.Size(945, 400);
+			this.Size = new System.Drawing.Size(680, 334);
 			((System.ComponentModel.ISupportInitialize)(this.mNumericUpDown1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.mTrackBar1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

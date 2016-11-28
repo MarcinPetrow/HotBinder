@@ -185,7 +185,11 @@ namespace Playground.App
 		private void DuplicateWindowActionExecute(object obj)
 		{
 			var view = new SampleView(this);
-			Form newWindow = new Form();
+			Form newWindow = new Form
+			{
+				AutoSize = true,
+				AutoSizeMode = AutoSizeMode.GrowAndShrink
+			};
 			newWindow.Controls.Add(view);
 			newWindow.Show();
 		}

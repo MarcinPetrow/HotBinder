@@ -36,6 +36,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.11\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -108,8 +112,30 @@
     </Compile>
     <Compile Include="Core\IContextable.cs" />
     <Compile Include="Core\IView.cs" />
+    <Compile Include="Core\Keepers\ActionEntry.cs" />
+    <Compile Include="Core\Keepers\ControllerEntry.cs" />
     <Compile Include="Core\Keepers\ControllersKeeper.cs" />
     <Compile Include="Core\Keepers\PinKeeper.cs" />
+    <Compile Include="Core\Layout\Default\BaseLayoutView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Core\Layout\Default\DefaulLayoutController.cs" />
+    <Compile Include="Core\Layout\Default\DefaultLayoutView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Core\Layout\Default\DefaultLayoutView.Designer.cs">
+      <DependentUpon>DefaultLayoutView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Layout\ILayoutView.cs" />
+    <Compile Include="Core\Layout\LayoutAttribute.cs" />
+    <Compile Include="Core\Layout\LayoutController.cs" />
+    <Compile Include="Core\Layout\LayoutControllerAttribute.cs" />
+    <Compile Include="Core\Layout\ViewHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Layout\ViewHost.Designer.cs">
+      <DependentUpon>ViewHost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Core\Model.cs" />
     <Compile Include="Core\Binding\Commands\RelayCommand.cs" />
     <Compile Include="Core\WinFormsView.cs">
@@ -124,6 +150,9 @@
     <EmbeddedResource Include="Core\Controls\HTextBox.resx">
       <DependentUpon>HTextBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Core\Layout\Default\DefaultLayoutView.resx">
+      <DependentUpon>DefaultLayoutView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -133,6 +162,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,11 +1,12 @@
 ﻿using HotBinder.Core.Abilities;
 using HotBinder.Core.Keepers;
+using HotBinder.Core.Layout;
 
 namespace HotBinder.Core
 {
 	public class Controller : Notificator
 	{
-		public AppHost Host;
+		public ILayoutView Host;
 
 		public void Redirect(string controllerName, string actionName)
 		{

@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppHost));
-			this.ViewPanel = new System.Windows.Forms.Panel();
+			this.HostPanel = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
 			// 
-			// ViewPanel
+			// HostPanel
 			// 
-			this.ViewPanel.AutoSize = true;
-			this.ViewPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.ViewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ViewPanel.Location = new System.Drawing.Point(0, 0);
-			this.ViewPanel.Name = "ViewPanel";
-			this.ViewPanel.Size = new System.Drawing.Size(341, 293);
-			this.ViewPanel.TabIndex = 0;
+			this.HostPanel.AutoSize = true;
+			this.HostPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.HostPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.HostPanel.Location = new System.Drawing.Point(0, 0);
+			this.HostPanel.Name = "HostPanel";
+			this.HostPanel.Size = new System.Drawing.Size(341, 293);
+			this.HostPanel.TabIndex = 0;
 			// 
 			// AppHost
 			// 
@@ -49,7 +49,7 @@
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(341, 293);
-			this.Controls.Add(this.ViewPanel);
+			this.Controls.Add(this.HostPanel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "AppHost";
@@ -63,7 +63,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Panel ViewPanel;
+		private System.Windows.Forms.Panel HostPanel;
 	}
 }
 
