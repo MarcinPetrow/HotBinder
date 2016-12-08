@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace HotBinder.Core.Abilities
 {
-	public class Notificator : INotifyPropertyChanged
+	public class Notificator : INotificator
 	{
 		public bool Notifiable = true;
 
@@ -21,7 +21,7 @@ namespace HotBinder.Core.Abilities
 			}
 		}
 
-		public void NotifyProperty(string propertyName)
+		public void NotifyProperty([CallerMemberName]string propertyName = null)
 		{
 			if (Notifiable)
 			{

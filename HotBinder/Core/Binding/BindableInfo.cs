@@ -1,5 +1,6 @@
-﻿using System.Reflection;
+﻿using HotBinder.Core.Abilities;
 using HotBinder.Core.Attributes;
+using System.Reflection;
 
 namespace HotBinder.Core.Binding
 {
@@ -11,7 +12,7 @@ namespace HotBinder.Core.Binding
 		public PropertyInfo UiPropertyInfo;
 		public string UiPropertyName;
 
-		public Controller Context { get; internal set; }
+		public INotificator Context { get; internal set; }
 		public BindableType Type { get; set; }
 	}
 }

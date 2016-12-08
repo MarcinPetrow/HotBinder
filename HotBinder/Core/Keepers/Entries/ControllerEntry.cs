@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using HotBinder.Core.Attributes;
 
-namespace HotBinder.Core.Keepers
+namespace HotBinder.Core.Keepers.Entries
 {
 	public class ControllerEntry
 	{

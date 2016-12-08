@@ -64,6 +64,7 @@
     <Compile Include="AppHost.Designer.cs">
       <DependentUpon>AppHost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Abilities\INotificator.cs" />
     <Compile Include="Core\Abilities\Notificator.cs" />
     <Compile Include="Core\Attributes\ActionAttribute.cs" />
     <Compile Include="Core\Attributes\BindableEventNameAttribute.cs" />
@@ -92,6 +93,12 @@
     <Compile Include="Core\Controls\HListBox.cs">
       <SubType>BindableInfo</SubType>
     </Compile>
+    <Compile Include="Core\Controls\HMenuItem.cs">
+      <SubType>BindableInfo</SubType>
+    </Compile>
+    <Compile Include="Core\Controls\HMenuStrip.cs">
+      <SubType>BindableInfo</SubType>
+    </Compile>
     <Compile Include="Core\Controls\HNumericUpDown.cs">
       <SubType>BindableInfo</SubType>
     </Compile>
@@ -104,6 +111,9 @@
     <Compile Include="Core\Controls\HTextBox.cs">
       <SubType>BindableInfo</SubType>
     </Compile>
+    <Compile Include="Core\Controls\HToolStripMenuItem.cs">
+      <SubType>BindableInfo</SubType>
+    </Compile>
     <Compile Include="Core\Controls\HTrackBar.cs">
       <SubType>BindableInfo</SubType>
     </Compile>
@@ -112,24 +122,20 @@
     </Compile>
     <Compile Include="Core\IContextable.cs" />
     <Compile Include="Core\IView.cs" />
-    <Compile Include="Core\Keepers\ActionEntry.cs" />
-    <Compile Include="Core\Keepers\ControllerEntry.cs" />
+    <Compile Include="Core\Keepers\Entries\ActionEntry.cs" />
+    <Compile Include="Core\Keepers\Entries\ControllerEntry.cs" />
     <Compile Include="Core\Keepers\ControllersKeeper.cs" />
+    <Compile Include="Core\Keepers\Entries\LayoutEntry.cs" />
+    <Compile Include="Core\Keepers\LayoutKeeper.cs" />
     <Compile Include="Core\Keepers\PinKeeper.cs" />
-    <Compile Include="Core\Layout\Default\BaseLayoutView.cs">
+    <Compile Include="Core\Layout\Default\BaseLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Core\Layout\Default\DefaulLayoutController.cs" />
-    <Compile Include="Core\Layout\Default\DefaultLayoutView.cs">
+    <Compile Include="Core\Layout\Default\DefaultLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Core\Layout\Default\DefaultLayoutView.Designer.cs">
-      <DependentUpon>DefaultLayoutView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Layout\ILayoutView.cs" />
+    <Compile Include="Core\Layout\ILayout.cs" />
     <Compile Include="Core\Layout\LayoutAttribute.cs" />
-    <Compile Include="Core\Layout\LayoutController.cs" />
-    <Compile Include="Core\Layout\LayoutControllerAttribute.cs" />
     <Compile Include="Core\Layout\ViewHost.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -150,8 +156,11 @@
     <EmbeddedResource Include="Core\Controls\HTextBox.resx">
       <DependentUpon>HTextBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Core\Layout\Default\DefaultLayoutView.resx">
-      <DependentUpon>DefaultLayoutView.cs</DependentUpon>
+    <EmbeddedResource Include="Core\Layout\Default\BaseLayout.resx">
+      <DependentUpon>BaseLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Layout\Default\DefaultLayout.resx">
+      <DependentUpon>DefaultLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

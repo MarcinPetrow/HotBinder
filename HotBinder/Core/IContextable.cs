@@ -1,7 +1,9 @@
-﻿namespace HotBinder.Core
+﻿using HotBinder.Core.Abilities;
+
+namespace HotBinder.Core
 {
 	public interface IContextable
 	{
-		Controller Context { get; set; }
+		INotificator Context { get; set; }
 	}
 }

@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\CustomLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="App\SampleController.cs" />
     <Compile Include="App\SampleModel.cs" />
     <Compile Include="App\SampleView.cs">
@@ -56,6 +59,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="App\CustomLayout.resx">
+      <DependentUpon>CustomLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\SampleView.resx">
       <DependentUpon>SampleView.cs</DependentUpon>
     </EmbeddedResource>

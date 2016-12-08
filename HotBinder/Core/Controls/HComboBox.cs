@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
-using System.Windows.Forms;
-using HotBinder.Core.Attributes;
+﻿using HotBinder.Core.Attributes;
 using HotBinder.Core.Binding;
+using System.ComponentModel;
+using System.Windows.Forms;
+using HotBinder.Core.Abilities;
 
 namespace HotBinder.Core.Controls
 {
@@ -33,6 +34,6 @@ namespace HotBinder.Core.Controls
 		[BindableElement("Click", "Click", BindableType.Action)]
 		public string ClickAction { get; set; }
 
-		public Controller Context { get; set; }
+		public INotificator Context { get; set; }
 	}
 }

@@ -212,7 +212,7 @@ namespace Playground.App
 		{
 			var view = new SampleView(this);
 
-			Host.ApplyView(view);
+			Host.ApplyView(view, "CustomLayout");
 
 			Name = "Ex";
 		}

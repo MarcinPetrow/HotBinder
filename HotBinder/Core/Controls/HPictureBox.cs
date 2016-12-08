@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
-using System.Windows.Forms;
+﻿using HotBinder.Core.Abilities;
 using HotBinder.Core.Attributes;
 using HotBinder.Core.Binding;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace HotBinder.Core.Controls
 {
@@ -18,6 +19,6 @@ namespace HotBinder.Core.Controls
 		public string BindVisible { get; set; }
 
 
-		public Controller Context { get; set; }
+		public INotificator Context { get; set; }
 	}
 }

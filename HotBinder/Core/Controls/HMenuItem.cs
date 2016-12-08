@@ -8,19 +8,11 @@ namespace HotBinder.Core.Controls
 {
 	[DesignerCategory("BindableInfo")]
 	[ToolboxItem(true)]
-	public class HTrackBar : TrackBar, IBindable
+	public class HMenuItem : MenuItem, IBindable
 	{
 		[Category("Model binding")]
-		[BindableElement("Value", "ValueChanged")]
-		public string BindValue { get; set; }
-
-		[Category("Model binding")]
-		[BindableElement("Minimum")]
-		public string BindMinimum { get; set; }
-
-		[Category("Model binding")]
-		[BindableElement("Maximum")]
-		public string BindMaximum { get; set; }
+		[BindableElement("Text", "TextChanged")]
+		public string BindText { get; set; }
 
 		[Category("Model binding")]
 		[BindableElement("Enabled", "EnabledChanged")]
@@ -30,7 +22,14 @@ namespace HotBinder.Core.Controls
 		[BindableElement("Visible", "VisibleChanged")]
 		public string BindVisible { get; set; }
 
+		[Category("Model binding")]
+		[BindableElement("Click", "Click", BindableType.Action)]
+		public string ClickAction { get; set; }
 
-		public INotificator  Context { get; set; }
+		[Category("Model binding")]
+		[BindableElement("Size", "SizeChanged")]
+		public string BindSize { get; set; }
+
+		public INotificator Context { get; set; }
 	}
 }

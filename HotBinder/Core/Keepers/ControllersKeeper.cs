@@ -1,4 +1,4 @@
-﻿using HotBinder.Core.Layout;
+﻿using HotBinder.Core.Keepers.Entries;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -109,7 +109,7 @@ namespace HotBinder.Core.Keepers
 			defaultAction.Execute(controllerEntry.Instance);
 		}
 
-		public void PerformDefault(ILayoutView host)
+		public void PerformDefault(AppHost host)
 		{
 			var defaultController = GetDefaultControllerEntry();
 			defaultController.Instance.Host = host;
