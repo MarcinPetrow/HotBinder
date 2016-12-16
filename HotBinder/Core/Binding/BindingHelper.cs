@@ -1,10 +1,10 @@
 using HotBinder.Core.Attributes;
+using HotBinder.Core.Controls;
+using HotBinder.Core.Controls.Descriptors;
 using HotBinder.Core.Keepers;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -62,45 +62,6 @@ namespace HotBinder.Core.Binding
 
 			ApplyEventRegister(target, binding);
 
-		}
-
-		public static void BindAll(this IBindable target)
-		{
-			var type = target.GetType();
-
-			var propertiesInfos = type.GetProperties();
-			foreach (var propertyInfo in propertiesInfos)
-			{
-				if (!propertyInfo.IsDefined(typeof(BindableElement), false))
-				{
-					continue;
-				}
-
-				var propertyAttributes = propertyInfo.GetCustomAttributes(typeof(BindableElement));
-				IEnumerable<Attribute> attributes = propertyAttributes as Attribute[] ?? propertyAttributes.ToArray();
-				if (attributes.Count() != 1)
-				{
-					throw new BindingException("BindableElement attributes count mismatch.");
-				}
-				var bindableElement = attributes.FirstOrDefault() as BindableElement;
-				if (bindableElement == null)
-				{
-					throw new BindingException("Failed to read bindable attribute.");
-				}
-
-				var propertyValue = propertyInfo.GetValue(target) as string;
-				if (!string.IsNullOrEmpty(propertyValue))
-				{
-					Bind(target, new BindableInfo
-					{
-						UiPropertyName = bindableElement.Name,
-						PropertyName = propertyValue,
-						UiEventName = bindableElement.EventName,
-						Type = bindableElement.Type,
-						Context = target.Context
-					});
-				}
-			}
 		}
 
 		private static void ApplyEventRegister(object target, BindableInfo binding)
@@ -250,5 +211,112 @@ namespace HotBinder.Core.Binding
 			}
 			throw new BindingException("Cannot create delegate for event.");
 		}
+
+
+		public static IControlDescriptor GetDescriptor()
+		{
+			return new ButtonDescriptor();
+		}
+
+
+		private static IControlDescriptor GetDescriptor(Type targetType)
+		{
+			if (targetType == typeof(Button))
+			{
+				return new ButtonDescriptor();
+
+			}
+			if (targetType == typeof(TextBox))
+			{
+				return new TextBoxDescriptor();
+
+			}
+			if (targetType == typeof(CheckBox))
+			{
+				return new CheckBoxDescriptor();
+
+			}
+			if (targetType == typeof(ProgressBar))
+			{
+				return new ProgressBarDescriptor();
+
+			}
+			if (targetType == typeof(PictureBox))
+			{
+				return new PictureBoxDescriptor();
+
+			}
+			if (targetType == typeof(DateTimePicker))
+			{
+				return new DateTimePickerDescriptor();
+
+			}
+
+			if (targetType == typeof(ComboBox))
+			{
+				return new ComboBoxDescriptor();
+
+			}
+
+
+			if (targetType == typeof(TrackBar))
+			{
+				return new TrackBarDescriptor();
+
+			}
+			if (targetType == typeof(RadioButton))
+			{
+				return new RadioButtonDescriptor();
+
+			}
+			if (targetType == typeof(NumericUpDown))
+			{
+				return new NumericUpDownDescriptor();
+
+			}
+			if (targetType == typeof(ListBox))
+			{
+				return new ListBoxDescriptor();
+
+			}
+			if (targetType == typeof(Label))
+			{
+				return new LabelDescriptor();
+			}
+
+
+			return null;
+		}
+
+		public static void BindAll(WinFormsView view, Control target)
+		{
+			var targetType = target.GetType();
+
+			var descriptor = GetDescriptor(targetType);
+			var context = ContextsKeeper.Instance.GetContext(target);
+
+			var avaliableProperties = descriptor.GetBindableElements();
+			foreach (var avaliableProperty in avaliableProperties)
+			{
+
+				var valueProvide = view.GetValueProvider(avaliableProperty.Name);
+
+				var propertyValue = valueProvide?.GetValue(target);
+
+				if (!string.IsNullOrEmpty(propertyValue))
+				{
+					Bind(target, new BindableInfo
+					{
+						UiPropertyName = avaliableProperty.Name,
+						PropertyName = propertyValue,
+						UiEventName = avaliableProperty.EventName,
+						Type = avaliableProperty.Type,
+						Context = context,
+					});
+				}
+
+			}
+		}
+
 	}
 }

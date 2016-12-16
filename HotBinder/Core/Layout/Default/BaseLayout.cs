@@ -3,7 +3,6 @@ using HotBinder.Core.Keepers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
@@ -39,19 +38,8 @@ namespace HotBinder.Core.Layout.Default
 
 		private void ApplyDataContext(Control target = null)
 		{
-			ControlCollection controlsList = target?.Controls ?? Controls;
-			foreach (var contextable in controlsList.OfType<IContextable>())
-			{
-				contextable.Context = this;
-				Console.WriteLine($"ApplyDataContext on {contextable}");
-			}
-			for (var index = 0; index < controlsList.Count; index++)
-			{
-				var control = controlsList[index];
+			ContextsKeeper.Instance.Register(this, this);
 
-				ApplyDataContext(control);
-
-			}
 			NotifyAllProperties();
 		}
 
@@ -65,8 +53,8 @@ namespace HotBinder.Core.Layout.Default
 				{
 					continue;
 				}
-				var bindable = control as IBindable;
-				bindable?.BindAll();
+				var bindable = control as Control;
+				//BindingHelper.BindAll(this, bindable);
 				Console.WriteLine($"Binder on {bindable}");
 			}
 
@@ -78,8 +66,9 @@ namespace HotBinder.Core.Layout.Default
 					continue;
 				}
 				Binder(control);
-
 			}
+
+
 		}
 
 		#region Notificator

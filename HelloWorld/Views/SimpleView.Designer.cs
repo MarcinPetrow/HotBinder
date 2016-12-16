@@ -30,71 +30,72 @@ namespace HelloWorld.Views
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.hTextBox1 = new HTextBox();
-			this.hLabel1 = new HotBinder.Core.Controls.HLabel();
-			this.hLabel2 = new HotBinder.Core.Controls.HLabel();
-			this.hLabel3 = new HotBinder.Core.Controls.HLabel();
+			this.button1 = new System.Windows.Forms.Button();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
-			// hTextBox1
+			// button1
 			// 
-			this.hTextBox1.BindEnabled = null;
-			this.hTextBox1.BindText = "Name";
-			this.hTextBox1.BindVisible = null;
-			this.hTextBox1.Context = null;
-			this.hTextBox1.Location = new System.Drawing.Point(207, 129);
-			this.hTextBox1.Name = "hTextBox1";
-			this.hTextBox1.Size = new System.Drawing.Size(170, 20);
-			this.hTextBox1.TabIndex = 0;
+			this.button1.Location = new System.Drawing.Point(3, 3);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 0;
+			this.button1.Text = "Name";
+			this.TextBindingProvider.SetTextBinding(this.button1, "");
+			this.button1.UseVisualStyleBackColor = true;
 			// 
-			// hLabel1
+			// textBox1
 			// 
-			this.hLabel1.BindEnabled = null;
-			this.hLabel1.BindText = null;
-			this.hLabel1.BindVisible = null;
-			this.hLabel1.Context = null;
-			this.hLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.hLabel1.Location = new System.Drawing.Point(204, 194);
-			this.hLabel1.Name = "hLabel1";
-			this.hLabel1.Size = new System.Drawing.Size(100, 23);
-			this.hLabel1.TabIndex = 1;
-			this.hLabel1.Text = "Hello";
+			this.textBox1.Location = new System.Drawing.Point(105, 93);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(100, 20);
+			this.textBox1.TabIndex = 1;
+			this.TextBindingProvider.SetTextBinding(this.textBox1, "Name");
 			// 
-			// hLabel2
+			// textBox2
 			// 
-			this.hLabel2.BindEnabled = null;
-			this.hLabel2.BindText = "Name";
-			this.hLabel2.BindVisible = null;
-			this.hLabel2.Context = null;
-			this.hLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.hLabel2.Location = new System.Drawing.Point(264, 194);
-			this.hLabel2.Name = "hLabel2";
-			this.hLabel2.Size = new System.Drawing.Size(100, 23);
-			this.hLabel2.TabIndex = 2;
+			this.textBox2.Location = new System.Drawing.Point(283, 93);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(100, 20);
+			this.textBox2.TabIndex = 2;
+			this.TextBindingProvider.SetTextBinding(this.textBox2, "Name");
 			// 
-			// hLabel3
+			// checkBox1
 			// 
-			this.hLabel3.AutoSize = true;
-			this.hLabel3.BindEnabled = null;
-			this.hLabel3.BindText = null;
-			this.hLabel3.BindVisible = null;
-			this.hLabel3.Context = null;
-			this.hLabel3.Location = new System.Drawing.Point(222, 113);
-			this.hLabel3.Name = "hLabel3";
-			this.hLabel3.Size = new System.Drawing.Size(142, 13);
-			this.hLabel3.TabIndex = 3;
-			this.hLabel3.Text = "Please enter your name here";
+			this.checkBox1.AutoSize = true;
+			this.CheckedBindingProvider.SetCheckedBinding(this.checkBox1, "");
+			this.checkBox1.Location = new System.Drawing.Point(119, 189);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(80, 17);
+			this.checkBox1.TabIndex = 3;
+			this.checkBox1.Text = "checkBox1";
+			this.TextBindingProvider.SetTextBinding(this.checkBox1, "");
+			this.checkBox1.UseVisualStyleBackColor = true;
+			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			// 
+			// textBox3
+			// 
+			this.textBox3.Location = new System.Drawing.Point(283, 146);
+			this.textBox3.Name = "textBox3";
+			this.textBox3.Size = new System.Drawing.Size(100, 20);
+			this.textBox3.TabIndex = 4;
+			this.TextBindingProvider.SetTextBinding(this.textBox3, "Name");
 			// 
 			// SimpleView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.hLabel3);
-			this.Controls.Add(this.hLabel2);
-			this.Controls.Add(this.hLabel1);
-			this.Controls.Add(this.hTextBox1);
+			this.Controls.Add(this.textBox3);
+			this.Controls.Add(this.checkBox1);
+			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.button1);
 			this.Name = "SimpleView";
 			this.Size = new System.Drawing.Size(577, 359);
+			this.TextBindingProvider.SetTextBinding(this, "");
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -102,9 +103,10 @@ namespace HelloWorld.Views
 
 		#endregion
 
-		private HTextBox hTextBox1;
-		private HotBinder.Core.Controls.HLabel hLabel1;
-		private HotBinder.Core.Controls.HLabel hLabel2;
-		private HotBinder.Core.Controls.HLabel hLabel3;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.TextBox textBox3;
 	}
 }

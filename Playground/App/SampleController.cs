@@ -171,7 +171,7 @@ namespace Playground.App
 			DuplicateWindowAction = new RelayCommands(DuplicateWindowActionExecute);
 			AddItemAction = new RelayCommands(AddItemActionExecute);
 
-			SelectedIndex = 1;
+			SelectedIndex = 5;
 			SampleDate = DateTime.Now;
 
 			Items = new BindingList<HStringListItem>();

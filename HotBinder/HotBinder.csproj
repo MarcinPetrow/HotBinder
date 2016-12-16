@@ -74,54 +74,49 @@
     <Compile Include="Core\Binding\BindingHelper.cs" />
     <Compile Include="Core\Binding\IBindable.cs" />
     <Compile Include="Core\Controller.cs" />
+    <Compile Include="Core\Controls\BindingProviders\DataSourceBindingProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Controls\BindingProviders\ClickBindingProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Controls\BindingProviders\IControlValueProvider.cs" />
+    <Compile Include="Core\Controls\BindingProviders\VisibleBindingProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Controls\BindingProviders\EnabledBindingProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Controls\BindingProviders\ValueBindingProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Controls\BindingProviders\TextBindingProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\Controls\Components\HStringListItem.cs" />
-    <Compile Include="Core\Controls\HButton.cs">
-      <SubType>BindableInfo</SubType>
+    <Compile Include="Core\Controls\BindingProviders\CheckedBindingProvider.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Core\Controls\HCheckBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HComboBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HDateTimePicker.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HLabel.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HListBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HMenuItem.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HMenuStrip.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HNumericUpDown.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HProgressBar.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HRadioButton.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HTextBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HToolStripMenuItem.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HTrackBar.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
-    <Compile Include="Core\Controls\HPictureBox.cs">
-      <SubType>BindableInfo</SubType>
-    </Compile>
+    <Compile Include="Core\Controls\Descriptors\ControlDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\IControlDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\LabelDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\ButtonDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\CheckBoxDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\ComboBoxDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\DateTimePickerDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\TextBoxDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\ListBoxDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\MenuItemDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\MenuStripDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\NumericUpDownDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\ProgressBarDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\RadioButtonDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\ToolStripMenuItemDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\TrackBarDescriptor.cs" />
+    <Compile Include="Core\Controls\Descriptors\PictureBoxDescriptor.cs" />
     <Compile Include="Core\IContextable.cs" />
     <Compile Include="Core\IView.cs" />
+    <Compile Include="Core\Keepers\ContextsKeeper.cs" />
     <Compile Include="Core\Keepers\Entries\ActionEntry.cs" />
     <Compile Include="Core\Keepers\Entries\ControllerEntry.cs" />
     <Compile Include="Core\Keepers\ControllersKeeper.cs" />
@@ -148,19 +143,20 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Core\WPFView.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AppHost.resx">
       <DependentUpon>AppHost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Controls\HTextBox.resx">
-      <DependentUpon>HTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Core\Layout\Default\BaseLayout.resx">
       <DependentUpon>BaseLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Core\Layout\Default\DefaultLayout.resx">
       <DependentUpon>DefaultLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\WinFormsView.resx">
+      <DependentUpon>WinFormsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

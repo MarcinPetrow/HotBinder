@@ -20,6 +20,8 @@ namespace HelloWorld.Controllers
 		{
 			var view = new SimpleView(this);
 
+			Name = "John";
+
 			Host.ApplyView(view);
 		}
 	}
