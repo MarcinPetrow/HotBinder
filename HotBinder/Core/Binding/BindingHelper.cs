@@ -1,6 +1,4 @@
 using HotBinder.Core.Attributes;
-using HotBinder.Core.Controls;
-using HotBinder.Core.Controls.Descriptors;
 using HotBinder.Core.Keepers;
 using System;
 using System.ComponentModel;
@@ -212,87 +210,11 @@ namespace HotBinder.Core.Binding
 			throw new BindingException("Cannot create delegate for event.");
 		}
 
-
-		public static IControlDescriptor GetDescriptor()
-		{
-			return new ButtonDescriptor();
-		}
-
-
-		private static IControlDescriptor GetDescriptor(Type targetType)
-		{
-			if (targetType == typeof(Button))
-			{
-				return new ButtonDescriptor();
-
-			}
-			if (targetType == typeof(TextBox))
-			{
-				return new TextBoxDescriptor();
-
-			}
-			if (targetType == typeof(CheckBox))
-			{
-				return new CheckBoxDescriptor();
-
-			}
-			if (targetType == typeof(ProgressBar))
-			{
-				return new ProgressBarDescriptor();
-
-			}
-			if (targetType == typeof(PictureBox))
-			{
-				return new PictureBoxDescriptor();
-
-			}
-			if (targetType == typeof(DateTimePicker))
-			{
-				return new DateTimePickerDescriptor();
-
-			}
-
-			if (targetType == typeof(ComboBox))
-			{
-				return new ComboBoxDescriptor();
-
-			}
-
-
-			if (targetType == typeof(TrackBar))
-			{
-				return new TrackBarDescriptor();
-
-			}
-			if (targetType == typeof(RadioButton))
-			{
-				return new RadioButtonDescriptor();
-
-			}
-			if (targetType == typeof(NumericUpDown))
-			{
-				return new NumericUpDownDescriptor();
-
-			}
-			if (targetType == typeof(ListBox))
-			{
-				return new ListBoxDescriptor();
-
-			}
-			if (targetType == typeof(Label))
-			{
-				return new LabelDescriptor();
-			}
-
-
-			return null;
-		}
-
 		public static void BindAll(WinFormsView view, Control target)
 		{
 			var targetType = target.GetType();
 
-			var descriptor = GetDescriptor(targetType);
+			var descriptor = DescriptorsKeepers.Instance.GetDescriptor(targetType);
 			var context = ContextsKeeper.Instance.GetContext(target);
 
 			var avaliableProperties = descriptor.GetBindableElements();

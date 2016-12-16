@@ -117,6 +117,7 @@
     <Compile Include="Core\IContextable.cs" />
     <Compile Include="Core\IView.cs" />
     <Compile Include="Core\Keepers\ContextsKeeper.cs" />
+    <Compile Include="Core\Keepers\DescriptorsKeepers.cs" />
     <Compile Include="Core\Keepers\Entries\ActionEntry.cs" />
     <Compile Include="Core\Keepers\Entries\ControllerEntry.cs" />
     <Compile Include="Core\Keepers\ControllersKeeper.cs" />
